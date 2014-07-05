@@ -70,10 +70,10 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // DEBT: This allows touches to move outside the view bounds.
-    // Might want to add a property, or just prevent that altogether.
     [super touchesMoved:touches withEvent:event];
-    self.state = UIGestureRecognizerStateChanged;
+
+    CGPoint location = [self locationInView:self.view];
+    self.state = CGRectContainsPoint(self.view.bounds, location) ? UIGestureRecognizerStateChanged : UIGestureRecognizerStateCancelled;
     [self notifyClient];
 }
 

@@ -16,5 +16,58 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import UIKit
 
 class ViolationDirectionWheel: UIControl {
+    var gestureRecognizer : ViolationDirectedPressGestureRecognizer!
+    var isPressed : Bool = false
+    var direction : Double = 0.0 // radians ccw from east
 
+    override var hidden : Bool {
+    didSet {
+        isPressed = false
+    }
+    }
+
+    init(frame: CGRect) {
+        super.init(frame: frame)
+        gestureRecognizer = ViolationDirectedPressGestureRecognizer(target: self, action: "handleDirectedPress:")
+        addGestureRecognizer(gestureRecognizer)
+    }
+
+    func handleDirectedPress(sender: ViolationDirectedPressGestureRecognizer) {
+        /*
+         * Here's hoping all the toRaw() and back stuff below is right.
+         * We generate a .ValueChanged event whenever anything happens.
+         * We also generate .TouchDown, .TouchDragInside, .TouchUpInside and .TouchCancel events
+         * as appropriate.
+         */
+        let valueChanged = UIControlEvents.ValueChanged.toRaw() // UInt
+
+        switch (sender.state) {
+        case .Ended:
+            isPressed = false
+            sendActionsForControlEvents(UIControlEvents(valueChanged | UIControlEvents.TouchDown.toRaw()))
+        case .Cancelled:
+            isPressed = false
+            sendActionsForControlEvents(UIControlEvents(valueChanged | UIControlEvents.TouchCancel.toRaw()))
+        case .Began:
+            updateDirection(sender)
+            isPressed = true
+            sendActionsForControlEvents(UIControlEvents(valueChanged | UIControlEvents.TouchDown.toRaw()))
+        case .Changed:
+            updateDirection(sender)
+            sendActionsForControlEvents(UIControlEvents(valueChanged | UIControlEvents.TouchDragInside.toRaw()))
+        default:
+            break
+        }
+    }
+
+    func updateDirection(sender: ViolationDirectedPressGestureRecognizer) {
+        let location = sender.locationInView(self)
+        let width = Double(frame.size.width)
+        let height = Double(frame.size.height)
+
+        let y = 0.5 * height - Double(location.y)
+        let x = Double(location.x) - 0.5 * width
+
+        direction = atan2(y, x)
+    }
 }

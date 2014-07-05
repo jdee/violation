@@ -15,18 +15,26 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ControlViewController: UIViewController {
+
+    @IBOutlet var controlHolder : UIView
+    @IBOutlet var pressedLabel : UILabel
+    @IBOutlet var directionLabel : UILabel
+
+    var directionWheel : ViolationDirectionWheel!
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        directionWheel = ViolationDirectionWheel(frame: controlHolder.bounds)
+        controlHolder.addSubview(directionWheel)
+        directionWheel.addTarget(self, action: "somethingChanged:", forControlEvents: .ValueChanged)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func somethingChanged(sender: ViolationDirectionWheel) {
+        // NSLog("something changed: isPressed: %@, direction: %f", sender.isPressed ? "true" : "false", sender.direction)
+        pressedLabel.text = sender.isPressed ? "pressed" : ""
+        directionLabel.text = String(format: "%.2f", sender.direction)
     }
-
-
 }
 

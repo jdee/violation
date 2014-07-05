@@ -35,11 +35,14 @@ class GestureViewController: UIViewController {
         switch (sender.state) {
         case .Cancelled, .Ended:
             star.removeFromSuperview()
+            NSLog("gesture cancelled or ended")
         case .Began:
             setStarFrame(sender)
             output.addSubview(star)
+            NSLog("gesture began")
         case .Changed:
             setStarFrame(sender)
+            NSLog("gesture changed")
         default:
             break
         }
