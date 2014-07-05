@@ -14,6 +14,7 @@
 		7B577A7919688B0F002D8327 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7819688B0F002D8327 /* Images.xcassets */; };
 		7B577A8519688B0F002D8327 /* ViolationDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */; };
 		7B577A93196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */; };
+		7B5F1CB51968A7D5002F512E /* ViolationDirectionWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CB41968A7D5002F512E /* ViolationDirectionWheel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectedPressGestureRecognizer.m; sourceTree = "<group>"; };
 		7B577A92196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationDirectedPressGestureRecognizer.h; sourceTree = "<group>"; };
 		7B577A9419689B86002D8327 /* ViolationDemo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B5F1CB41968A7D5002F512E /* ViolationDirectionWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationDirectionWheel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				7B577A92196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.h */,
 				7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */,
+				7B5F1CB41968A7D5002F512E /* ViolationDirectionWheel.swift */,
 			);
 			name = Violation;
 			path = ..;
@@ -231,6 +234,7 @@
 				7B577A93196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m in Sources */,
 				7B577A7419688B0F002D8327 /* SecondViewController.swift in Sources */,
 				7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */,
+				7B5F1CB51968A7D5002F512E /* ViolationDirectionWheel.swift in Sources */,
 				7B577A7219688B0F002D8327 /* GestureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
