@@ -13,44 +13,48 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+ * This is mature Obj-C code. I had hoped to rewrite this simple thing in Swift, but this private method business makes it a little more
+ * complicated.
+ */
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
 #import "ViolationDirectedPressGestureRecognizer.h"
 
 @interface ViolationDirectedPressGestureRecognizer()
-@property SEL action;
-@property id target;
-- (void) notifyClient;
+@property (nonatomic) SEL action;
+@property (nonatomic) id target;
 @end
 
 @implementation ViolationDirectedPressGestureRecognizer
-@synthesize target, action;
 
 - (id)initWithTarget:(id)aTarget action:(SEL)anAction
 {
     self = [super initWithTarget:aTarget action:anAction];
     if (self) {
-        action = anAction;
-        target = aTarget;
+        _action = anAction;
+        _target = aTarget;
     }
     return self;
 }
 
 /*
- * DEBT: Isn't this handled by the base class?
+ * DEBT: Isn't this handled by the base class? How do you make use of additional targets and actions
+ * if addTarget:action: is called?
  */
 - (void)notifyClient
 {
-    if (action && target && [target respondsToSelector:action]) {
+    if (_action && _target && [_target respondsToSelector:_action]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [target performSelector:action withObject:self];
+        [_target performSelector:_action withObject:self];
 #pragma clang diagnostic pop
     }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan:touches withEvent:event];
     switch (self.state) {
         case UIGestureRecognizerStatePossible:
             self.state = touches.count == 1 ? UIGestureRecognizerStateBegan : UIGestureRecognizerStateFailed;
@@ -65,40 +69,29 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesMoved:touches withEvent:event];
     self.state = UIGestureRecognizerStateChanged;
     [self notifyClient];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesEnded:touches withEvent:event];
     self.state = UIGestureRecognizerStateEnded;
     [self notifyClient];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesCancelled:touches withEvent:event];
     self.state = UIGestureRecognizerStateCancelled;
     [self notifyClient];
 }
 
-- (void)reset
-{
-    self.state = UIGestureRecognizerStatePossible;
-}
-
 - (void)ignoreTouch:(UITouch *)touch forEvent:(UIEvent *)event
 {
-    
-}
-
-- (BOOL)canBePreventedByGestureRecognizer:(UIGestureRecognizer *)preventingGestureRecognizer
-{
-    return NO;
-}
-
-- (BOOL)canPreventGestureRecognizer:(UIGestureRecognizer *)preventedGestureRecognizer
-{
-    return YES;
+    // NO. :p
+    // Or rather, DEBT: Do this.
 }
 
 @end

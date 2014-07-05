@@ -15,6 +15,12 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * The directed press is a continuous gesture. It begins any time a single touch goes down in its view.
+ * It is canceled any time a second touch goes down, and it ends whenever the single touch comes up.
+ * The target is invoked with the sender in the changed state any time the single touch moves. This gesture
+ * recognizer simply allows the caller to track the position of a touch across a view.
+ */
 @interface ViolationDirectedPressGestureRecognizer : UIGestureRecognizer
 
 @end

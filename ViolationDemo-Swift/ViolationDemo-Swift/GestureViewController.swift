@@ -23,8 +23,10 @@ class GestureViewController: UIViewController {
         case .Began:
             setStarFrame(sender)
             output.addSubview(star)
-        default:
+        case .Changed:
             setStarFrame(sender)
+        default:
+            break
         }
     }
 
