@@ -40,7 +40,8 @@
 
 /*
  * DEBT: Isn't this handled by the base class? How do you make use of additional targets and actions
- * if addTarget:action: is called?
+ * if addTarget:action: is called? For that matter, if I stick with this, I need to override
+ * addTarget:action: and removeTarget:action:.
  */
 - (void)notifyClient
 {
@@ -69,6 +70,8 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    // DEBT: This allows touches to move outside the view bounds.
+    // Might want to add a property, or just prevent that altogether.
     [super touchesMoved:touches withEvent:event];
     self.state = UIGestureRecognizerStateChanged;
     [self notifyClient];
