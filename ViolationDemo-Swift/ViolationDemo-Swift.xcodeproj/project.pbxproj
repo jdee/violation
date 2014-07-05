@@ -13,7 +13,7 @@
 		7B577A7719688B0F002D8327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7519688B0F002D8327 /* Main.storyboard */; };
 		7B577A7919688B0F002D8327 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7819688B0F002D8327 /* Images.xcassets */; };
 		7B577A8519688B0F002D8327 /* ViolationDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */; };
-		7B577A9019688BF5002D8327 /* ViolationDirectedPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A8F19688BF5002D8327 /* ViolationDirectedPressGestureRecognizer.swift */; };
+		7B577A93196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,8 @@
 		7B577A7E19688B0F002D8327 /* ViolationDemo-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ViolationDemo-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B577A8319688B0F002D8327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDemo_SwiftTests.swift; sourceTree = "<group>"; };
-		7B577A8F19688BF5002D8327 /* ViolationDirectedPressGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationDirectedPressGestureRecognizer.swift; sourceTree = "<group>"; };
+		7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectedPressGestureRecognizer.m; sourceTree = "<group>"; };
+		7B577A92196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationDirectedPressGestureRecognizer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +119,8 @@
 		7B577A8E19688B99002D8327 /* Violation */ = {
 			isa = PBXGroup;
 			children = (
-				7B577A8F19688BF5002D8327 /* ViolationDirectedPressGestureRecognizer.swift */,
+				7B577A92196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.h */,
+				7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */,
 			);
 			name = Violation;
 			path = ..;
@@ -224,8 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B577A93196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m in Sources */,
 				7B577A7419688B0F002D8327 /* SecondViewController.swift in Sources */,
-				7B577A9019688BF5002D8327 /* ViolationDirectedPressGestureRecognizer.swift in Sources */,
 				7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */,
 				7B577A7219688B0F002D8327 /* FirstViewController.swift in Sources */,
 			);
