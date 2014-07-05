@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -63,7 +64,7 @@
                             <constraint firstItem="rde-Es-79G" firstAttribute="top" secondItem="nvK-na-mVy" secondAttribute="bottom" constant="8" id="xz6-He-9ga"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gesture" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Gesture" image="hammer_sickle_in_star_icon" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="input" destination="TOy-jm-TUh" id="GmE-8m-vtw"/>
                         <outlet property="output" destination="nvK-na-mVy" id="q5E-iC-KFf"/>
@@ -86,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Second" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,7 +116,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="hammer_sickle_in_star_icon" width="25" height="24"/>
     </resources>
 </document>
