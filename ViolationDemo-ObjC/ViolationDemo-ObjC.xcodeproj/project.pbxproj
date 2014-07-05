@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B11AFD11968C2CF00CCDE2B /* ViolationDirectionWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFD01968C2CF00CCDE2B /* ViolationDirectionWheel.swift */; };
 		7B5F1CC51968A96B002F512E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC41968A96B002F512E /* main.m */; };
 		7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */; };
 		7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */; };
-		7B5F1CCE1968A96B002F512E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCD1968A96B002F512E /* SecondViewController.m */; };
+		7B5F1CCE1968A96B002F512E /* ViolationControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCD1968A96B002F512E /* ViolationControlViewController.m */; };
 		7B5F1CD11968A96B002F512E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCF1968A96B002F512E /* Main.storyboard */; };
 		7B5F1CD31968A96B002F512E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CD21968A96B002F512E /* Images.xcassets */; };
 		7B5F1CDF1968A96B002F512E /* ViolationDemo_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CDE1968A96B002F512E /* ViolationDemo_ObjCTests.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B11AFD01968C2CF00CCDE2B /* ViolationDirectionWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationDirectionWheel.swift; path = ../ViolationDirectionWheel.swift; sourceTree = "<group>"; };
+		7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B5F1CBF1968A96B002F512E /* ViolationDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViolationDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5F1CC31968A96B002F512E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5F1CC41968A96B002F512E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -35,8 +38,8 @@
 		7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViolationAppDelegate.m; sourceTree = "<group>"; };
 		7B5F1CC91968A96B002F512E /* ViolationGestureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViolationGestureViewController.h; sourceTree = "<group>"; };
 		7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViolationGestureViewController.m; sourceTree = "<group>"; };
-		7B5F1CCC1968A96B002F512E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		7B5F1CCD1968A96B002F512E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7B5F1CCC1968A96B002F512E /* ViolationControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViolationControlViewController.h; sourceTree = "<group>"; };
+		7B5F1CCD1968A96B002F512E /* ViolationControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViolationControlViewController.m; sourceTree = "<group>"; };
 		7B5F1CD01968A96B002F512E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B5F1CD21968A96B002F512E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../Images.xcassets; sourceTree = "<group>"; };
 		7B5F1CD81968A96B002F512E /* ViolationDemo-ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ViolationDemo-ObjCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +93,8 @@
 				7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */,
 				7B5F1CC91968A96B002F512E /* ViolationGestureViewController.h */,
 				7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */,
-				7B5F1CCC1968A96B002F512E /* SecondViewController.h */,
-				7B5F1CCD1968A96B002F512E /* SecondViewController.m */,
+				7B5F1CCC1968A96B002F512E /* ViolationControlViewController.h */,
+				7B5F1CCD1968A96B002F512E /* ViolationControlViewController.m */,
 				7B5F1CCF1968A96B002F512E /* Main.storyboard */,
 				7B5F1CD21968A96B002F512E /* Images.xcassets */,
 				7B5F1CC21968A96B002F512E /* Supporting Files */,
@@ -104,6 +107,7 @@
 			children = (
 				7B5F1CC31968A96B002F512E /* Info.plist */,
 				7B5F1CC41968A96B002F512E /* main.m */,
+				7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -130,6 +134,7 @@
 			children = (
 				7B5F1CE91968A98F002F512E /* ViolationDirectedPressGestureRecognizer.h */,
 				7B5F1CEA1968A98F002F512E /* ViolationDirectedPressGestureRecognizer.m */,
+				7B11AFD01968C2CF00CCDE2B /* ViolationDirectionWheel.swift */,
 			);
 			name = Violation;
 			sourceTree = "<group>";
@@ -234,7 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B5F1CCE1968A96B002F512E /* SecondViewController.m in Sources */,
+				7B5F1CCE1968A96B002F512E /* ViolationControlViewController.m in Sources */,
+				7B11AFD11968C2CF00CCDE2B /* ViolationDirectionWheel.swift in Sources */,
 				7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */,
 				7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */,
 				7B5F1CEC1968A98F002F512E /* ViolationDirectedPressGestureRecognizer.m in Sources */,
@@ -310,6 +316,7 @@
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "ViolationDemo-ObjC/ViolationDemo-ObjC-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -344,6 +351,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "ViolationDemo-ObjC/ViolationDemo-ObjC-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -425,6 +433,7 @@
 				7B5F1CE41968A96B002F512E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B5F1CE51968A96B002F512E /* Build configuration list for PBXNativeTarget "ViolationDemo-ObjCTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +442,7 @@
 				7B5F1CE71968A96B002F512E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

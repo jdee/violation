@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface ViolationControlViewController : UIViewController
 
+@property (nonatomic) IBOutlet UIView* controlHolder;
+@property (nonatomic) IBOutlet UILabel* pressedLabel, *directionLabel;
 
 @end
 
