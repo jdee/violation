@@ -13,25 +13,11 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "ViolationControlViewController.h"
-#import "ViolationDirectionWheel.h"
+#import <UIKit/UIKit.h>
 
-@implementation ViolationControlViewController {
-    ViolationDirectionWheel* directionWheel;
-}
+@interface ViolationDirectionWheel : UIControl
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    directionWheel = [[ViolationDirectionWheel alloc] initWithFrame:_controlHolder.bounds];
-    [directionWheel addTarget:self action:@selector(somethingChanged:) forControlEvents:UIControlEventValueChanged];
-    [_controlHolder addSubview:directionWheel];
-}
-
-- (void)somethingChanged:(ViolationDirectionWheel*)sender
-{
-    _pressedLabel.text = sender.isPressed ? @"pressed" : @"";
-    _directionLabel.text = [NSString stringWithFormat:@"%.2f", sender.direction];
-}
+@property (nonatomic, readonly) BOOL isPressed;
+@property (nonatomic, readonly) double direction;
 
 @end

@@ -14,3 +14,4 @@
  */
 
 #import "ViolationDirectedPressGestureRecognizer.h"
+#import "ViolationDirectionWheel.h"
