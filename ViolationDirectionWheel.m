@@ -35,32 +35,25 @@
 }
 
 - (void)handleDirectedPress:(ViolationDirectedPressGestureRecognizer*)sender
-{
-    UIControlEvents eventsToSend = 0;
-
-    switch (sender.state) {
+{    switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             [self updateDirection:sender];
             _isPressed = YES;
-            eventsToSend = UIControlEventTouchDown | UIControlEventValueChanged;
             break;
         case UIGestureRecognizerStateChanged:
             [self updateDirection:sender];
-            eventsToSend = UIControlEventTouchDragInside | UIControlEventValueChanged;
             break;
         case UIGestureRecognizerStateEnded:
-            eventsToSend = UIControlEventTouchUpInside | UIControlEventValueChanged;
             _isPressed = NO;
             break;
         case UIGestureRecognizerStateCancelled:
-            eventsToSend = UIControlEventTouchCancel | UIControlEventValueChanged;
             _isPressed = NO;
             break;
         default:
             break;
     }
 
-    [self sendActionsForControlEvents:eventsToSend];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)updateDirection:(ViolationDirectedPressGestureRecognizer*)sender
