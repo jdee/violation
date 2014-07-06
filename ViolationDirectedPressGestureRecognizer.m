@@ -21,37 +21,7 @@
 
 #import "ViolationDirectedPressGestureRecognizer.h"
 
-@interface ViolationDirectedPressGestureRecognizer()
-@property (nonatomic) SEL action;
-@property (nonatomic) id target;
-@end
-
 @implementation ViolationDirectedPressGestureRecognizer
-
-- (id)initWithTarget:(id)aTarget action:(SEL)anAction
-{
-    self = [super initWithTarget:aTarget action:anAction];
-    if (self) {
-        _action = anAction;
-        _target = aTarget;
-    }
-    return self;
-}
-
-/*
- * DEBT: Isn't this handled by the base class? How do you make use of additional targets and actions
- * if addTarget:action: is called? For that matter, if I stick with this, I need to override
- * addTarget:action: and removeTarget:action:.
- */
-- (void)notifyClient
-{
-    if (_action && _target && [_target respondsToSelector:_action]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [_target performSelector:_action withObject:self];
-#pragma clang diagnostic pop
-    }
-}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -64,8 +34,6 @@
             self.state = UIGestureRecognizerStateCancelled;
             break;
     }
-    
-    [self notifyClient];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -74,21 +42,18 @@
 
     CGPoint location = [self locationInView:self.view];
     self.state = CGRectContainsPoint(self.view.bounds, location) ? UIGestureRecognizerStateChanged : UIGestureRecognizerStateCancelled;
-    [self notifyClient];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
     self.state = UIGestureRecognizerStateEnded;
-    [self notifyClient];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesCancelled:touches withEvent:event];
     self.state = UIGestureRecognizerStateCancelled;
-    [self notifyClient];
 }
 
 - (void)ignoreTouch:(UITouch *)touch forEvent:(UIEvent *)event
