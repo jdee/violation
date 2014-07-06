@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B11AFDB1968E67700CCDE2B /* ViolationDirectionWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFDA1968E67700CCDE2B /* ViolationDirectionWheel.m */; };
+		7B11AFDE1968F09700CCDE2B /* ViolationDirectionWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFDD1968F09700CCDE2B /* ViolationDirectionWheel.m */; };
 		7B5F1CC51968A96B002F512E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC41968A96B002F512E /* main.m */; };
 		7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */; };
 		7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */; };
@@ -30,8 +30,8 @@
 
 /* Begin PBXFileReference section */
 		7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
-		7B11AFD91968E67700CCDE2B /* ViolationDirectionWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationDirectionWheel.h; sourceTree = "<group>"; };
-		7B11AFDA1968E67700CCDE2B /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectionWheel.m; sourceTree = "<group>"; };
+		7B11AFDC1968F09700CCDE2B /* ViolationDirectionWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationDirectionWheel.h; sourceTree = "<group>"; };
+		7B11AFDD1968F09700CCDE2B /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectionWheel.m; sourceTree = "<group>"; };
 		7B5F1CBF1968A96B002F512E /* ViolationDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViolationDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5F1CC31968A96B002F512E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5F1CC41968A96B002F512E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 			children = (
 				7B5F1CE91968A98F002F512E /* ViolationDirectedPressGestureRecognizer.h */,
 				7B5F1CEA1968A98F002F512E /* ViolationDirectedPressGestureRecognizer.m */,
-				7B11AFD91968E67700CCDE2B /* ViolationDirectionWheel.h */,
-				7B11AFDA1968E67700CCDE2B /* ViolationDirectionWheel.m */,
+				7B11AFDC1968F09700CCDE2B /* ViolationDirectionWheel.h */,
+				7B11AFDD1968F09700CCDE2B /* ViolationDirectionWheel.m */,
 			);
 			name = Violation;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 				7B5F1CCE1968A96B002F512E /* ViolationControlViewController.m in Sources */,
 				7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */,
 				7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */,
-				7B11AFDB1968E67700CCDE2B /* ViolationDirectionWheel.m in Sources */,
+				7B11AFDE1968F09700CCDE2B /* ViolationDirectionWheel.m in Sources */,
 				7B5F1CEC1968A98F002F512E /* ViolationDirectedPressGestureRecognizer.m in Sources */,
 				7B5F1CC51968A96B002F512E /* main.m in Sources */,
 			);
