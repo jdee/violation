@@ -27,8 +27,8 @@ class ControlViewController: UIViewController {
         super.viewDidLoad()
 
         directionWheel = ViolationDirectionWheel(frame: controlHolder.bounds)
-        controlHolder.addSubview(directionWheel)
         directionWheel.addTarget(self, action: "somethingChanged:", forControlEvents: .ValueChanged)
+        controlHolder.addSubview(directionWheel)
     }
 
     func somethingChanged(sender: ViolationDirectionWheel) {

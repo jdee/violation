@@ -16,7 +16,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import UIKit
 
 class ViolationDirectionWheel: UIControl {
-    var gestureRecognizer : ViolationDirectedPressGestureRecognizer!
     var isPressed : Bool = false
     var direction : Double = 0.0 // radians ccw from east
 
@@ -28,8 +27,7 @@ class ViolationDirectionWheel: UIControl {
 
     init(frame: CGRect) {
         super.init(frame: frame)
-        gestureRecognizer = ViolationDirectedPressGestureRecognizer(target: self, action: "handleDirectedPress:")
-        addGestureRecognizer(gestureRecognizer)
+        addGestureRecognizer(ViolationDirectedPressGestureRecognizer(target: self, action: "handleDirectedPress:"))
     }
 
     func handleDirectedPress(sender: ViolationDirectedPressGestureRecognizer) {
