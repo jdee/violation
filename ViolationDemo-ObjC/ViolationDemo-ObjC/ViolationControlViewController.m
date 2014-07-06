@@ -31,7 +31,7 @@
 - (void)somethingChanged:(ViolationDirectionWheel*)sender
 {
     _pressedLabel.text = sender.isPressed ? @"pressed" : @"";
-    _directionLabel.text = [NSString stringWithFormat:@"%.2f", sender.direction];
+    _directionLabel.text = sender.isPressed ? [NSString stringWithFormat:@"%.2f", sender.direction] : @"";
 }
 
 @end

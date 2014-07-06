@@ -34,7 +34,7 @@ class ControlViewController: UIViewController {
     func somethingChanged(sender: ViolationDirectionWheel) {
         // NSLog("something changed: isPressed: %@, direction: %f", sender.isPressed ? "true" : "false", sender.direction)
         pressedLabel.text = sender.isPressed ? "pressed" : ""
-        directionLabel.text = String(format: "%.2f", sender.direction)
+        directionLabel.text = sender.isPressed ? String(format: "%.2f", sender.direction) : ""
     }
 }
 
