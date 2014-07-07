@@ -17,6 +17,8 @@
 
 @interface ViolationDirectionWheel : UIControl
 
+@property (nonatomic, copy) NSString* title;
+
 @property (nonatomic, readonly) BOOL isPressed;
 @property (nonatomic, readonly) double direction;
 

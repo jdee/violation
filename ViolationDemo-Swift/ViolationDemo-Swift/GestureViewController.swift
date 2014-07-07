@@ -25,8 +25,7 @@ class GestureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let directedPressGestureRecognizer = ViolationDirectedPressGestureRecognizer(target:self, action: "handleDirectedPress:")
-        input.addGestureRecognizer(directedPressGestureRecognizer)
+        input.addGestureRecognizer(ViolationDirectedPressGestureRecognizer(target:self, action: "handleDirectedPress:"))
 
         star = UIImageView(image: UIImage(named: "hammer_sickle_in_star"))
         star.hidden = true

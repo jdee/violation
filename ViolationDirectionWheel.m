@@ -248,7 +248,7 @@
 
     // filled annulus
     UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:center radius:radius-0.5*lineWidth startAngle:0.0 endAngle:2.0*M_PI clockwise:NO];
-    [path addArcWithCenter:CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5) radius:radius*0.3 startAngle:0.0 endAngle:2.0*M_PI clockwise:YES];
+    [path addArcWithCenter:center radius:radius*0.3 startAngle:0.0 endAngle:2.0*M_PI clockwise:YES];
 
     shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = path.CGPath;
@@ -345,6 +345,11 @@
     shapeLayer.fillColor = self.currentTitleColor.CGColor;
 
     [wheelLayer addSublayer:shapeLayer];
+
+    // optional title
+    if (_title) {
+        CATextLayer* titleLayer = [CATextLayer layer];
+    }
 
     [self.layer addSublayer:wheelLayer];
 }
