@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B11AFD81968E41300CCDE2B /* ViolationDirectionWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFD71968E41300CCDE2B /* ViolationDirectionWheel.m */; };
 		7B11AFE4196A396A00CCDE2B /* IOSKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFE3196A396A00CCDE2B /* IOSKnobControl.m */; };
+		7B11AFEC196B40F000CCDE2B /* ViolationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFEB196B40F000CCDE2B /* ViolationControl.m */; };
+		7B11AFEF196B43E200CCDE2B /* NSString+Violation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFEE196B43E200CCDE2B /* NSString+Violation.m */; };
 		7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A6F19688B0F002D8327 /* AppDelegate.swift */; };
 		7B577A7219688B0F002D8327 /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A7119688B0F002D8327 /* GestureViewController.swift */; };
 		7B577A7419688B0F002D8327 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A7319688B0F002D8327 /* ControlViewController.swift */; };
@@ -33,6 +35,10 @@
 		7B11AFD71968E41300CCDE2B /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectionWheel.m; sourceTree = "<group>"; };
 		7B11AFE2196A396A00CCDE2B /* IOSKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKnobControl.h; sourceTree = "<group>"; };
 		7B11AFE3196A396A00CCDE2B /* IOSKnobControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSKnobControl.m; sourceTree = "<group>"; };
+		7B11AFEA196B40F000CCDE2B /* ViolationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationControl.h; sourceTree = "<group>"; };
+		7B11AFEB196B40F000CCDE2B /* ViolationControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationControl.m; sourceTree = "<group>"; };
+		7B11AFED196B43E200CCDE2B /* NSString+Violation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Violation.h"; sourceTree = "<group>"; };
+		7B11AFEE196B43E200CCDE2B /* NSString+Violation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Violation.m"; sourceTree = "<group>"; };
 		7B577A6A19688B0F002D8327 /* ViolationDemo-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViolationDemo-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B577A6E19688B0F002D8327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B577A6F19688B0F002D8327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,10 @@
 		7B577A8E19688B99002D8327 /* Violation */ = {
 			isa = PBXGroup;
 			children = (
+				7B11AFED196B43E200CCDE2B /* NSString+Violation.h */,
+				7B11AFEE196B43E200CCDE2B /* NSString+Violation.m */,
+				7B11AFEA196B40F000CCDE2B /* ViolationControl.h */,
+				7B11AFEB196B40F000CCDE2B /* ViolationControl.m */,
 				7B577A92196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.h */,
 				7B577A91196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m */,
 				7B11AFD61968E41300CCDE2B /* ViolationDirectionWheel.h */,
@@ -247,9 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B11AFEC196B40F000CCDE2B /* ViolationControl.m in Sources */,
 				7B577A93196897CE002D8327 /* ViolationDirectedPressGestureRecognizer.m in Sources */,
 				7B577A7419688B0F002D8327 /* ControlViewController.swift in Sources */,
 				7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */,
+				7B11AFEF196B43E200CCDE2B /* NSString+Violation.m in Sources */,
 				7B11AFD81968E41300CCDE2B /* ViolationDirectionWheel.m in Sources */,
 				7B577A7219688B0F002D8327 /* GestureViewController.swift in Sources */,
 				7B11AFE4196A396A00CCDE2B /* IOSKnobControl.m in Sources */,

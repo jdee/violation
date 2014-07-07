@@ -13,37 +13,19 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "IOSKnobControl.h"
-#import "ViolationControlViewController.h"
-#import "ViolationDirectionWheel.h"
+#import <UIKit/UIKit.h>
 
-@implementation ViolationControlViewController {
-    IOSKnobControl* dialView;
-    ViolationDirectionWheel* directionWheel;
-}
+@interface ViolationControl : UIControl
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+@property (nonatomic, readonly) UIColor* currentFillColor;
+@property (nonatomic, readonly) UIColor* currentTitleColor;
 
-    directionWheel = [[ViolationDirectionWheel alloc] initWithFrame:_controlHolder.bounds];
-    directionWheel.title = @"press";
+- (void) setFillColor:(UIColor*)color forState:(UIControlState)state;
+- (void) setTitleColor:(UIColor*)color forState:(UIControlState)state;
 
-    [directionWheel addTarget:self action:@selector(somethingChanged:) forControlEvents:UIControlEventValueChanged];
-    [directionWheel setFillColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] forState:UIControlStateNormal];
-    [directionWheel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [directionWheel setTitleColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:1.0] forState:UIControlStateHighlighted];
-    [_controlHolder addSubview:directionWheel];
+- (UIColor*) fillColorForState:(UIControlState)state;
+- (UIColor*) titleColorForState:(UIControlState)state;
 
-    dialView = [[IOSKnobControl alloc] initWithFrame:_dialHolder.bounds imageNamed:@"needle"];
-    dialView.enabled = NO;
-    dialView.hidden = YES;
-    [_dialHolder addSubview:dialView];
-}
-
-- (void)somethingChanged:(ViolationDirectionWheel*)sender
-{
-    dialView.hidden = !sender.isPressed;
-    dialView.position = directionWheel.direction - 0.5*M_PI;
-}
+- (void) updateImage;
 
 @end

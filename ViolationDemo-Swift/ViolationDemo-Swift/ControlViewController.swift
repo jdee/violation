@@ -27,6 +27,7 @@ class ControlViewController: UIViewController {
         super.viewDidLoad()
 
         directionWheel = ViolationDirectionWheel(frame: controlHolder.bounds)
+        directionWheel.title = "press"
         directionWheel.addTarget(self, action: "somethingChanged:", forControlEvents: .ValueChanged)
 
         directionWheel.setFillColor(UIColor(red:1.0, green:1.0, blue:1.0, alpha:0.5), forState: .Normal)

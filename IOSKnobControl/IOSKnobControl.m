@@ -207,8 +207,6 @@ static CGRect adjustFrame(CGRect frame) {
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = YES;
-
-    NSLog(@"initially UIControl has %d gesture recognizer(s)", self.gestureRecognizers.count);
 }
 
 #pragma mark - Public Methods, Properties and Overrides

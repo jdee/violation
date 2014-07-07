@@ -13,37 +13,27 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "IOSKnobControl.h"
-#import "ViolationControlViewController.h"
-#import "ViolationDirectionWheel.h"
+#import "NSString+Violation.h"
 
-@implementation ViolationControlViewController {
-    IOSKnobControl* dialView;
-    ViolationDirectionWheel* directionWheel;
-}
+@protocol NSStringDeprecatedMethods
+- (CGSize)sizeWithFont:(UIFont*)font;
+@end
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    directionWheel = [[ViolationDirectionWheel alloc] initWithFrame:_controlHolder.bounds];
-    directionWheel.title = @"press";
-
-    [directionWheel addTarget:self action:@selector(somethingChanged:) forControlEvents:UIControlEventValueChanged];
-    [directionWheel setFillColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] forState:UIControlStateNormal];
-    [directionWheel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [directionWheel setTitleColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:1.0] forState:UIControlStateHighlighted];
-    [_controlHolder addSubview:directionWheel];
-
-    dialView = [[IOSKnobControl alloc] initWithFrame:_dialHolder.bounds imageNamed:@"needle"];
-    dialView.enabled = NO;
-    dialView.hidden = YES;
-    [_dialHolder addSubview:dialView];
-}
-
-- (void)somethingChanged:(ViolationDirectionWheel*)sender
+@implementation NSString(Violation)
+- (CGSize)sizeOfTextWithFont:(UIFont *)font
 {
-    dialView.hidden = !sender.isPressed;
-    dialView.position = directionWheel.direction - 0.5*M_PI;
+    CGSize textSize;
+    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
+        // iOS 7+
+        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
+    }
+    else {
+        // iOS 5 & 6
+        // following http://vgable.com/blog/2009/06/15/ignoring-just-one-deprecated-warning/
+        id<NSStringDeprecatedMethods> string = (id<NSStringDeprecatedMethods>)self;
+        textSize = [string sizeWithFont:font];
+    }
+    return textSize;
 }
 
 @end
