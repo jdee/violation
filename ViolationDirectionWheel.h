@@ -20,4 +20,13 @@
 @property (nonatomic, readonly) BOOL isPressed;
 @property (nonatomic, readonly) double direction;
 
+@property (nonatomic, readonly) UIColor* currentFillColor;
+@property (nonatomic, readonly) UIColor* currentTitleColor;
+
+- (void) setFillColor:(UIColor*)color forState:(UIControlState)state;
+- (void) setTitleColor:(UIColor*)color forState:(UIControlState)state;
+
+- (UIColor*) fillColorForState:(UIControlState)state;
+- (UIColor*) titleColorForState:(UIControlState)state;
+
 @end
