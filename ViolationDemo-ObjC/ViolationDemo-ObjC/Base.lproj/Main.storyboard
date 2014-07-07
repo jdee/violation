@@ -124,7 +124,7 @@
                             <constraint firstItem="XzA-FA-bCv" firstAttribute="top" secondItem="atW-QG-buT" secondAttribute="bottom" constant="8" id="nca-c3-qUy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Control" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Control" image="direction-wheel" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="controlHolder" destination="Sc6-Rd-cpT" id="TBs-ir-kNp"/>
                         <outlet property="directionLabel" destination="XzA-FA-bCv" id="lWA-yM-9JC"/>
@@ -158,6 +158,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="direction-wheel" width="25" height="25"/>
         <image name="hammer_sickle_in_star_icon" width="25" height="24"/>
     </resources>
 </document>
