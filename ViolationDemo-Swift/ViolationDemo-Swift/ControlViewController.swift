@@ -18,10 +18,10 @@ import UIKit
 class ControlViewController: UIViewController {
 
     @IBOutlet var controlHolder : UIView
-    @IBOutlet var pressedLabel : UILabel
-    @IBOutlet var directionLabel : UILabel
+    @IBOutlet var dialHolder : UIView
 
     var directionWheel : ViolationDirectionWheel!
+    var dialView : IOSKnobControl!
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,17 @@ class ControlViewController: UIViewController {
         directionWheel.setTitleColor(UIColor(red:0.5, green:0.5, blue:0.0, alpha:1.0), forState: .Highlighted)
 
         controlHolder.addSubview(directionWheel)
+
+        dialView = IOSKnobControl(frame: dialHolder.bounds, imageNamed: "needle")
+        dialView.enabled = false
+        dialView.hidden = true
+        dialHolder.addSubview(dialView)
     }
 
     func somethingChanged(sender: ViolationDirectionWheel) {
         // NSLog("something changed: isPressed: %@, direction: %f", sender.isPressed ? "true" : "false", sender.direction)
-        pressedLabel.text = sender.isPressed ? "pressed" : ""
-        directionLabel.text = sender.isPressed ? String(format: "%.2f", sender.direction) : ""
+        dialView.hidden = !sender.isPressed
+        dialView.position = Float(sender.direction - M_PI*0.5)
     }
 }
 

@@ -18,7 +18,7 @@
 @interface ViolationControlViewController : UIViewController
 
 @property (nonatomic) IBOutlet UIView* controlHolder;
-@property (nonatomic) IBOutlet UILabel* pressedLabel, *directionLabel;
+@property (nonatomic) IBOutlet UIView* dialHolder;
 
 @end
 

@@ -85,50 +85,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x54-Sq-wl8">
+                                <rect key="frame" x="80" y="20" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Aql-EM-Bk9"/>
+                                    <constraint firstAttribute="height" constant="160" id="WA1-9N-DJe"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sc6-Rd-cpT">
-                                <rect key="frame" x="20" y="20" width="200" height="200"/>
+                                <rect key="frame" x="60" y="188" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.0078431377190000002" green="0.99607849120000003" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="TK6-sJ-Hbz"/>
                                     <constraint firstAttribute="width" constant="200" id="xCo-NB-48g"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atW-QG-buT">
-                                <rect key="frame" x="228" y="20" width="72" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="JOo-fy-QbL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzA-FA-bCv">
-                                <rect key="frame" x="228" y="49" width="72" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Lfu-r8-GLR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XzA-FA-bCv" secondAttribute="trailing" constant="20" id="13B-yj-pNX"/>
-                            <constraint firstItem="atW-QG-buT" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="4fh-oj-Sgx"/>
-                            <constraint firstItem="atW-QG-buT" firstAttribute="leading" secondItem="Sc6-Rd-cpT" secondAttribute="trailing" constant="8" id="7MU-lZ-Peo"/>
-                            <constraint firstItem="Sc6-Rd-cpT" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="Jmb-o1-Vhp"/>
-                            <constraint firstAttribute="trailing" secondItem="atW-QG-buT" secondAttribute="trailing" constant="20" id="ZmZ-yM-8cN"/>
-                            <constraint firstItem="Sc6-Rd-cpT" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="i4a-xl-ixN"/>
-                            <constraint firstItem="XzA-FA-bCv" firstAttribute="leading" secondItem="Sc6-Rd-cpT" secondAttribute="trailing" constant="8" id="nOa-Lg-sWx"/>
-                            <constraint firstItem="XzA-FA-bCv" firstAttribute="top" secondItem="atW-QG-buT" secondAttribute="bottom" constant="8" id="nca-c3-qUy"/>
+                            <constraint firstItem="x54-Sq-wl8" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="1g3-CO-1Ub"/>
+                            <constraint firstItem="Sc6-Rd-cpT" firstAttribute="top" secondItem="x54-Sq-wl8" secondAttribute="bottom" constant="8" id="dbz-vr-KmV"/>
+                            <constraint firstItem="x54-Sq-wl8" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="80" id="o3l-Bm-yvx"/>
+                            <constraint firstItem="x54-Sq-wl8" firstAttribute="leading" secondItem="Sc6-Rd-cpT" secondAttribute="trailing" constant="-180" id="zyE-j6-iIN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Control" image="direction-wheel" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="controlHolder" destination="Sc6-Rd-cpT" id="TBs-ir-kNp"/>
-                        <outlet property="directionLabel" destination="XzA-FA-bCv" id="lWA-yM-9JC"/>
-                        <outlet property="pressedLabel" destination="atW-QG-buT" id="5WE-2n-xnz"/>
+                        <outlet property="dialHolder" destination="x54-Sq-wl8" id="oF4-zh-T2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

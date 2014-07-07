@@ -29,16 +29,18 @@ class GestureViewController: UIViewController {
         input.addGestureRecognizer(directedPressGestureRecognizer)
 
         star = UIImageView(image: UIImage(named: "hammer_sickle_in_star"))
+        star.hidden = true
+        output.addSubview(star)
     }
 
     func handleDirectedPress(sender: ViolationDirectedPressGestureRecognizer) {
         switch (sender.state) {
         case .Cancelled, .Ended:
-            star.removeFromSuperview()
+            star.hidden = true
             // NSLog("gesture cancelled or ended")
         case .Began:
             setStarFrame(sender)
-            output.addSubview(star)
+            star.hidden = false
             // NSLog("gesture began")
         case .Changed:
             setStarFrame(sender)

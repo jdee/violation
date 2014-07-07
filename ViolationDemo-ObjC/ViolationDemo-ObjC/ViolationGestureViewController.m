@@ -26,6 +26,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     [_input addGestureRecognizer:directedPressGestureRecognizer];
 
     star = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hammer_sickle_in_star"]];
+    star.hidden = YES;
+    [_output addSubview:star];
 }
 
 - (void)handleDirectedPress:(ViolationDirectedPressGestureRecognizer*)sender
@@ -33,11 +35,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             [self setStarFrame:sender];
-            [_output addSubview:star];
+            star.hidden = NO;
             break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded:
-            [star removeFromSuperview];
+            star.hidden = YES;
             break;
         case UIGestureRecognizerStateChanged:
             [self setStarFrame:sender];

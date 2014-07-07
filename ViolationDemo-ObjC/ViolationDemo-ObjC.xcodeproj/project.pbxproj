@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B11AFE1196A301300CCDE2B /* ViolationDirectionWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFE0196A301300CCDE2B /* ViolationDirectionWheel.m */; };
+		7B11AFE9196A3C9800CCDE2B /* IOSKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFE8196A3C9800CCDE2B /* IOSKnobControl.m */; };
 		7B5F1CC51968A96B002F512E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC41968A96B002F512E /* main.m */; };
 		7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */; };
 		7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */; };
@@ -32,6 +33,8 @@
 		7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B11AFDF196A301300CCDE2B /* ViolationDirectionWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViolationDirectionWheel.h; path = ../ViolationDirectionWheel.h; sourceTree = "<group>"; };
 		7B11AFE0196A301300CCDE2B /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViolationDirectionWheel.m; path = ../ViolationDirectionWheel.m; sourceTree = "<group>"; };
+		7B11AFE7196A3C9800CCDE2B /* IOSKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKnobControl.h; sourceTree = "<group>"; };
+		7B11AFE8196A3C9800CCDE2B /* IOSKnobControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSKnobControl.m; sourceTree = "<group>"; };
 		7B5F1CBF1968A96B002F512E /* ViolationDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViolationDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5F1CC31968A96B002F512E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5F1CC41968A96B002F512E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,12 +71,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B11AFE6196A3C9800CCDE2B /* IOSKnobControl */ = {
+			isa = PBXGroup;
+			children = (
+				7B11AFE7196A3C9800CCDE2B /* IOSKnobControl.h */,
+				7B11AFE8196A3C9800CCDE2B /* IOSKnobControl.m */,
+			);
+			name = IOSKnobControl;
+			path = ../IOSKnobControl;
+			sourceTree = "<group>";
+		};
 		7B5F1CB61968A96B002F512E = {
 			isa = PBXGroup;
 			children = (
 				7B5F1CE81968A979002F512E /* Violation */,
 				7B5F1CC11968A96B002F512E /* ViolationDemo-ObjC */,
 				7B5F1CDB1968A96B002F512E /* ViolationDemo-ObjCTests */,
+				7B11AFE6196A3C9800CCDE2B /* IOSKnobControl */,
 				7B5F1CC01968A96B002F512E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5F1CCE1968A96B002F512E /* ViolationControlViewController.m in Sources */,
+				7B11AFE9196A3C9800CCDE2B /* IOSKnobControl.m in Sources */,
 				7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */,
 				7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */,
 				7B11AFE1196A301300CCDE2B /* ViolationDirectionWheel.m in Sources */,

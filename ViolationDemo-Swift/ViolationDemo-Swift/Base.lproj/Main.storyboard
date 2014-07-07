@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -85,52 +86,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dws-PE-zSa">
+                                <rect key="frame" x="80" y="20" width="160" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="cYg-1B-Dsd"/>
+                                    <constraint firstAttribute="width" constant="160" id="eSl-mk-qff"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-0g-Yl1">
-                                <rect key="frame" x="20" y="20" width="200" height="200"/>
+                                <rect key="frame" x="60" y="188" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.0078431377190000002" green="0.99607849120000003" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Dtm-Hk-tId"/>
                                     <constraint firstAttribute="height" constant="200" id="MgI-8a-fSa"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5a-RJ-zwh">
-                                <rect key="frame" x="228" y="20" width="72" height="21"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="X2p-uz-9G9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-67-OQU">
-                                <rect key="frame" x="228" y="49" width="72" height="21"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Thf-fC-u22"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OjW-0g-Yl1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="20" id="7Ua-ii-M6p"/>
-                            <constraint firstItem="OjW-0g-Yl1" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="EaU-kw-qJM"/>
-                            <constraint firstItem="YK9-67-OQU" firstAttribute="top" secondItem="I5a-RJ-zwh" secondAttribute="bottom" constant="8" id="Q9O-DC-HuC"/>
-                            <constraint firstAttribute="trailing" secondItem="YK9-67-OQU" secondAttribute="trailing" constant="20" id="UHo-JF-aRP"/>
-                            <constraint firstItem="I5a-RJ-zwh" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="Vx1-xK-TPH"/>
-                            <constraint firstAttribute="trailing" secondItem="I5a-RJ-zwh" secondAttribute="trailing" constant="20" id="h7b-KQ-5p3"/>
-                            <constraint firstItem="I5a-RJ-zwh" firstAttribute="leading" secondItem="OjW-0g-Yl1" secondAttribute="trailing" constant="8" id="jI2-rY-SFo"/>
-                            <constraint firstItem="YK9-67-OQU" firstAttribute="leading" secondItem="OjW-0g-Yl1" secondAttribute="trailing" constant="8" id="qfc-VJ-ORd"/>
+                            <constraint firstItem="dws-PE-zSa" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="80" id="3vt-WE-BwB"/>
+                            <constraint firstItem="OjW-0g-Yl1" firstAttribute="top" secondItem="dws-PE-zSa" secondAttribute="bottom" constant="8" id="9yO-om-usm"/>
+                            <constraint firstItem="dws-PE-zSa" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="dfe-hU-kz5"/>
+                            <constraint firstItem="dws-PE-zSa" firstAttribute="leading" secondItem="OjW-0g-Yl1" secondAttribute="trailing" constant="-180" id="yfi-xM-Mol"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Control" image="direction-wheel" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="controlHolder" destination="OjW-0g-Yl1" id="Avn-DI-QdL"/>
-                        <outlet property="directionLabel" destination="YK9-67-OQU" id="UZ5-Jm-Yfk"/>
-                        <outlet property="pressedLabel" destination="I5a-RJ-zwh" id="EKS-Nn-wau"/>
+                        <outlet property="dialHolder" destination="dws-PE-zSa" id="wPs-5W-b9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
