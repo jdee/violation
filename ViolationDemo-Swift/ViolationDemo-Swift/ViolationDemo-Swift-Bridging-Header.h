@@ -14,5 +14,6 @@
  */
 
 #import "IOSKnobControl.h"
+#import "NSString+Violation.h"
 #import "ViolationDirectedPressGestureRecognizer.h"
 #import "ViolationDirectionWheel.h"

@@ -32,7 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		7B11AFDF196A301300CCDE2B /* ViolationDirectionWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViolationDirectionWheel.h; path = ../ViolationDirectionWheel.h; sourceTree = "<group>"; };
 		7B11AFE0196A301300CCDE2B /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViolationDirectionWheel.m; path = ../ViolationDirectionWheel.m; sourceTree = "<group>"; };
 		7B11AFE7196A3C9800CCDE2B /* IOSKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKnobControl.h; sourceTree = "<group>"; };
@@ -128,7 +127,6 @@
 			children = (
 				7B5F1CC31968A96B002F512E /* Info.plist */,
 				7B5F1CC41968A96B002F512E /* main.m */,
-				7B11AFD51968C4F300CCDE2B /* ViolationDemo-ObjC-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
