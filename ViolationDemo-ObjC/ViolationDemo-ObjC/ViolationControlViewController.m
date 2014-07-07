@@ -26,9 +26,11 @@
     [super viewDidLoad];
 
     directionWheel = [[ViolationDirectionWheel alloc] initWithFrame:_controlHolder.bounds];
-    directionWheel.title = @"press";
-
     [directionWheel addTarget:self action:@selector(somethingChanged:) forControlEvents:UIControlEventValueChanged];
+
+    [directionWheel setTitle:@"press" forState:UIControlStateNormal];
+    [directionWheel setTitle:@"" forState:UIControlStateHighlighted];
+
     [directionWheel setFillColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] forState:UIControlStateNormal];
     [directionWheel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [directionWheel setTitleColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:1.0] forState:UIControlStateHighlighted];

@@ -17,9 +17,15 @@
 
 @implementation ViolationControl {
     UIColor* fillColor[4], *titleColor[4];
+    UIImage* images[4];
 }
 
-@dynamic currentFillColor, currentTitleColor;
+@dynamic currentFillColor, currentTitleColor, currentImage;
+
+- (UIImage*)currentImage
+{
+    return [self imageForState:self.state];
+}
 
 - (UIColor *)currentTitleColor
 {
@@ -58,7 +64,7 @@
  * state == UIControlStateDisabled | UIControlStateSelected, returns 3.
  * Does not currently support UIControlStateApplication. Returns -1 if those bits are set.
  */
-- (int)indexForState:(UIControlState)state
+- (NSInteger)indexForState:(UIControlState)state
 {
     if ((state & UIControlStateApplication) != 0) return -1;
     if ((state & UIControlStateSelected) != 0) return 3;
@@ -69,7 +75,7 @@
 
 - (UIColor *)fillColorForState:(UIControlState)state
 {
-    int index = [self indexForState:state];
+    NSInteger index = [self indexForState:state];
     // NSLog(@"state index: %d", index);
     UIColor* color = index >= 0 && fillColor[index] ? fillColor[index] : fillColor[[self indexForState:UIControlStateNormal]];
     // NSLog(@"fill color is %snil", color ? "not" : "");
@@ -104,7 +110,7 @@
 
 - (void)setFillColor:(UIColor *)color forState:(UIControlState)state
 {
-    int index = [self indexForState:state];
+    NSInteger index = [self indexForState:state];
     if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
         fillColor[index] = color;
     }
@@ -116,7 +122,7 @@
 
 - (UIColor *)titleColorForState:(UIControlState)state
 {
-    int index = [self indexForState:state];
+    NSInteger index = [self indexForState:state];
     // NSLog(@"state index: %d", index);
     UIColor* color = index >= 0 && titleColor[index] ? titleColor[index] : titleColor[[self indexForState:UIControlStateNormal]];
     // NSLog(@"title color is %snil", color ? "not" : "");
@@ -148,7 +154,7 @@
 
 - (void)setTitleColor:(UIColor *)color forState:(UIControlState)state
 {
-    int index = [self indexForState:state];
+    NSInteger index = [self indexForState:state];
     if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
         titleColor[index] = color;
     }
@@ -179,6 +185,41 @@
      * using a protocol with an @optional method and then perhaps check respondsToSelector: before calling it. I think
      * this is hella simpler.
      */
+}
+
+- (UIImage *)imageForState:(UIControlState)state
+{
+    NSInteger index = [self indexForState:state];
+    /*
+     * Like UIButton, use the image for UIControlStateNormal if none present.
+     */
+    // Mmmm. Double square brackets in the last expression of the ternary conditional: outer for the array subscript, inner for a method call.
+    return index >= 0 && images[index] ? images[index] : images[[self indexForState:UIControlStateNormal]];
+}
+
+- (void)setImage:(UIImage *)image forState:(UIControlState)state
+{
+    NSInteger index = [self indexForState:state];
+    /*
+     * Don't accept mixed states here. Cannot pass, e.g., UIControlStateHighlighted & UIControlStateDisabled.
+     * Those values are ignored here.
+     */
+    if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
+        images[index] = image;
+    }
+
+    /*
+     * The method parameter state must be one of the four enumerated values listed above.
+     * But self.state could be a mixed state. Conceivably, the control could be
+     * both disabled and highlighted. In that case, since disabled is numerically
+     * greater than highlighted, we return the index/image for UIControlStateDisabled.
+     * (See indexForState: below.) That is to say, the following expression is always true:
+     * [self indexForState:UIControlStateDisabled] == [self indexForState:UIControlStateHighlighted|UIControlStateDisabled]
+     * If we just now changed the image currently in use (the image for the current state), update it now.
+     */
+    if (index == [self indexForState:self.state]) {
+        [self updateImage];
+    }
 }
 
 @end

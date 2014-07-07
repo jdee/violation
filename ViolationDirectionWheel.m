@@ -23,10 +23,11 @@
 @end
 
 @implementation ViolationDirectionWheel {
+    NSString* titles[4];
     CALayer* wheelLayer;
 }
 
-@dynamic fontSizeForTitle, radius;
+@dynamic fontSizeForTitle, radius, currentTitle;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -61,10 +62,28 @@
     [self updateImage];
 }
 
-- (void)setTitle:(NSString *)title
+- (NSString *)titleForState:(UIControlState)state
 {
-    _title = title;
-    [self updateImage];
+    NSString* title = titles[[self indexForState:state]];
+    if (!title) title = titles[[self indexForState:UIControlStateNormal]];
+    return title;
+}
+
+- (void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    NSInteger index = [self indexForState:state];
+    if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
+        titles[index] = title;
+    }
+
+    if (index == [self indexForState:self.state]) {
+        [self updateImage];
+    }
+}
+
+- (NSString *)currentTitle
+{
+    return [self titleForState:self.state];
 }
 
 - (void)handleDirectedPress:(ViolationDirectedPressGestureRecognizer*)sender
@@ -103,10 +122,22 @@
 
 - (void)updateImage
 {
+    UIImage* currentImage = self.currentImage;
     [wheelLayer removeFromSuperlayer];
-
     wheelLayer = [CALayer layer];
 
+    if (currentImage) {
+        wheelLayer.contents = (id)currentImage.CGImage;
+    }
+    else {
+        [self drawWheel];
+    }
+
+    [self.layer addSublayer:wheelLayer];
+}
+
+- (void)drawWheel
+{
     const CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
 
     // outer ring, tangent to bounds (in square view)
@@ -224,9 +255,9 @@
     [wheelLayer addSublayer:shapeLayer];
 
     // optional title
-    if (_title) {
+    if (self.currentTitle) {
         CATextLayer* titleLayer = [CATextLayer layer];
-        titleLayer.string = _title;
+        titleLayer.string = self.currentTitle;
         titleLayer.alignmentMode = kCAAlignmentCenter;
         titleLayer.fontSize = self.fontSizeForTitle;
         titleLayer.backgroundColor = [UIColor clearColor].CGColor;
@@ -235,15 +266,13 @@
 
         UIFont* font = [UIFont fontWithName:@"Helvetica" size:titleLayer.fontSize];
         CGRect frame;
-        frame.size = [_title sizeOfTextWithFont:font];
+        frame.size = [self.currentTitle sizeOfTextWithFont:font];
         frame.origin.x = center.x - 0.5*frame.size.width;
         frame.origin.y = center.y - 0.5*frame.size.height;
         titleLayer.frame = frame;
 
         [wheelLayer addSublayer:titleLayer];
     }
-
-    [self.layer addSublayer:wheelLayer];
 }
 
 - (double)radius
@@ -274,7 +303,7 @@
     for (index=0; index<sizeof(fontSizes)/sizeof(CGFloat); ++index) {
         fontSize = fontSizes[index];
         UIFont* font = [UIFont fontWithName:@"Helvetica" size:fontSize];
-        const CGSize size = [_title sizeOfTextWithFont:font];
+        const CGSize size = [self.currentTitle sizeOfTextWithFont:font];
         const double available = [self availableWidthWithTitleSize:size];
         if (size.width <= available) break;
     }

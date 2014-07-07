@@ -17,11 +17,15 @@
 
 @interface ViolationDirectionWheel : ViolationControl
 
-@property (nonatomic, copy) NSString* title;
 @property (nonatomic) double innerRadius;
 @property (nonatomic) double lineWidth;
 
 @property (nonatomic, readonly) BOOL isPressed;
 @property (nonatomic, readonly) double direction;
+
+@property (nonatomic, readonly) NSString* currentTitle;
+
+- (NSString*) titleForState:(UIControlState)state;
+- (void) setTitle:(NSString*)title forState:(UIControlState)state;
 
 @end

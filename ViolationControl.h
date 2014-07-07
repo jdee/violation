@@ -19,13 +19,18 @@
 
 @property (nonatomic, readonly) UIColor* currentFillColor;
 @property (nonatomic, readonly) UIColor* currentTitleColor;
+@property (nonatomic, readonly) UIImage* currentImage;
 
 - (void) setFillColor:(UIColor*)color forState:(UIControlState)state;
 - (void) setTitleColor:(UIColor*)color forState:(UIControlState)state;
+- (void) setImage:(UIImage*)image forState:(UIControlState)state;
 
 - (UIColor*) fillColorForState:(UIControlState)state;
 - (UIColor*) titleColorForState:(UIControlState)state;
+- (UIImage*) imageForState:(UIControlState)state;
 
 - (void) updateImage;
+
+- (NSInteger)indexForState:(UIControlState)state;
 
 @end
