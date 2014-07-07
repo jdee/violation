@@ -24,6 +24,7 @@
 
 @implementation ViolationDirectionWheel {
     NSString* titles[4];
+    UIImage* titleImages[4];
     CALayer* wheelLayer;
 }
 
@@ -39,7 +40,7 @@
         [self updateImage];
 
         _lineWidth = 4.0;
-        _innerRadius = 0.3 * [self radius];
+        _innerRadius = 0.3 * [self radius]; // DEBT: If frame size changes, might wish to recompute inner radius. Or might want to make it a proportion.
     }
     return self;
 }
@@ -81,9 +82,33 @@
     }
 }
 
+- (UIImage *)titleImageForState:(UIControlState)state
+{
+    UIImage* image = titleImages[[self indexForState:state]];
+    if (!image) image = titleImages[[self indexForState:UIControlStateNormal]];
+    return image;
+}
+
+- (void)setTitleImage:(UIImage *)image forState:(UIControlState)state
+{
+    NSInteger index = [self indexForState:state];
+    if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
+        titleImages[index] = image;
+    }
+
+    if (index == [self indexForState:self.state]) {
+        [self updateImage];
+    }
+}
+
 - (NSString *)currentTitle
 {
     return [self titleForState:self.state];
+}
+
+- (UIImage *)currentTitleImage
+{
+    return [self titleImageForState:self.state];
 }
 
 - (void)handleDirectedPress:(ViolationDirectedPressGestureRecognizer*)sender
@@ -154,7 +179,7 @@
 
     // filled annulus
     UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:center radius:self.radius-0.5*_lineWidth startAngle:0.0 endAngle:2.0*M_PI clockwise:NO];
-    [path addArcWithCenter:center radius:_innerRadius startAngle:0.0 endAngle:2.0*M_PI clockwise:YES];
+    [path addArcWithCenter:center radius:_innerRadius+0.5*_lineWidth startAngle:0.0 endAngle:2.0*M_PI clockwise:YES];
 
     shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = path.CGPath;
@@ -169,7 +194,7 @@
 
     // inner ring
     shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = [UIBezierPath bezierPathWithArcCenter:center radius:self.radius*0.3 startAngle:0.0 endAngle:2.0*M_PI clockwise:YES].CGPath;
+    shapeLayer.path = [UIBezierPath bezierPathWithArcCenter:center radius:_innerRadius startAngle:0.0 endAngle:2.0*M_PI clockwise:YES].CGPath;
     shapeLayer.lineWidth = _lineWidth;
     shapeLayer.frame = self.bounds;
     shapeLayer.opaque = NO;
@@ -255,7 +280,21 @@
     [wheelLayer addSublayer:shapeLayer];
 
     // optional title
-    if (self.currentTitle) {
+    if (self.currentTitleImage) {
+        CALayer* titleImageLayer = [CALayer layer];
+        titleImageLayer.contents = (id)self.currentTitleImage;
+        titleImageLayer.backgroundColor = [UIColor clearColor].CGColor;
+        titleImageLayer.opaque = NO;
+
+        const double dimension = (_innerRadius - 0.5*_lineWidth) * sqrt(2.0);
+        CGRect frame;
+        frame.size.width = frame.size.height = dimension;
+        frame.origin.x = center.x - 0.5*frame.size.width;
+        frame.origin.y = center.y - 0.5*frame.size.height;
+        titleImageLayer.frame = frame;
+        [wheelLayer addSublayer:titleImageLayer];
+    }
+    else if (self.currentTitle) {
         CATextLayer* titleLayer = [CATextLayer layer];
         titleLayer.string = self.currentTitle;
         titleLayer.alignmentMode = kCAAlignmentCenter;
@@ -282,10 +321,6 @@
 
 - (double)availableWidthWithTitleSize:(CGSize)titleSize
 {
-    /*
-     * DEBT: The height of the text rectangle depends on the font size. A tiny font will have a wider area
-     * available than a huge one.
-     */
     const double pad = 0.0;
     const double innerWidth = 2.0*_innerRadius-_lineWidth;
     const double titleHeight = titleSize.height;

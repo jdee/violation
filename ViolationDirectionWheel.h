@@ -24,8 +24,11 @@
 @property (nonatomic, readonly) double direction;
 
 @property (nonatomic, readonly) NSString* currentTitle;
+@property (nonatomic, readonly) UIImage* currentTitleImage;
 
 - (NSString*) titleForState:(UIControlState)state;
+- (UIImage*) titleImageForState:(UIControlState)state;
 - (void) setTitle:(NSString*)title forState:(UIControlState)state;
+- (void) setTitleImage:(UIImage*)image forState:(UIControlState)state;
 
 @end
