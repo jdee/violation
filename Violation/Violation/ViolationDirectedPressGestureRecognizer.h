@@ -13,24 +13,14 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+Violation.h"
+#import <UIKit/UIKit.h>
 
-@implementation NSString(Violation)
-- (CGSize)sizeOfTextWithFont:(UIFont *)font
-{
-    CGSize textSize;
-    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
-    }
-    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [self sizeWithFont:font];
-    }
-    else {
-        // DEBT: And? Not that we're likely to get here.
-    }
-    return textSize;
-}
+/**
+ * The directed press is a continuous gesture. It begins any time a single touch goes down in its view.
+ * It is canceled any time a second touch goes down, and it ends whenever the single touch comes up.
+ * The target is invoked with the sender in the changed state any time the single touch moves. This gesture
+ * recognizer simply allows the caller to track the position of a touch across a view.
+ */
+@interface ViolationDirectedPressGestureRecognizer : UIGestureRecognizer
 
 @end

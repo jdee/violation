@@ -13,24 +13,53 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+Violation.h"
+/*
+ * This is mature Obj-C code. I had hoped to rewrite this simple thing in Swift, but this private method business makes it a little more
+ * complicated.
+ */
+#import <UIKit/UIGestureRecognizerSubclass.h>
 
-@implementation NSString(Violation)
-- (CGSize)sizeOfTextWithFont:(UIFont *)font
+#import "ViolationDirectedPressGestureRecognizer.h"
+
+@implementation ViolationDirectedPressGestureRecognizer
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CGSize textSize;
-    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
+    [super touchesBegan:touches withEvent:event];
+    switch (self.state) {
+        case UIGestureRecognizerStatePossible:
+            self.state = touches.count == 1 ? UIGestureRecognizerStateBegan : UIGestureRecognizerStateFailed;
+            break;
+        default:
+            self.state = UIGestureRecognizerStateCancelled;
+            break;
     }
-    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [self sizeWithFont:font];
-    }
-    else {
-        // DEBT: And? Not that we're likely to get here.
-    }
-    return textSize;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesMoved:touches withEvent:event];
+
+    CGPoint location = [self locationInView:self.view];
+    self.state = CGRectContainsPoint(self.view.bounds, location) ? UIGestureRecognizerStateChanged : UIGestureRecognizerStateCancelled;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    self.state = UIGestureRecognizerStateEnded;
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+    self.state = UIGestureRecognizerStateCancelled;
+}
+
+- (void)ignoreTouch:(UITouch *)touch forEvent:(UIEvent *)event
+{
+    // NO. :p
+    // Or rather, DEBT: Do this.
 }
 
 @end

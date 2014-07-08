@@ -13,24 +13,16 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+Violation.h"
+#import <UIKit/UIKit.h>
 
-@implementation NSString(Violation)
-- (CGSize)sizeOfTextWithFont:(UIFont *)font
-{
-    CGSize textSize;
-    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
-    }
-    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [self sizeWithFont:font];
-    }
-    else {
-        // DEBT: And? Not that we're likely to get here.
-    }
-    return textSize;
-}
+//! Project version number for Violation.
+FOUNDATION_EXPORT double ViolationVersionNumber;
 
-@end
+//! Project version string for Violation.
+FOUNDATION_EXPORT const unsigned char ViolationVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <Violation/PublicHeader.h>
+#import <Violation/NSString+Violation.h>
+#import <Violation/ViolationDirectedPressGestureRecognizer.h>
+#import <Violation/ViolationDirectionWheel.h> // imports ViolationControl.h, so no need for explicit import
+

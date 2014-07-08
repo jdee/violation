@@ -13,24 +13,22 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "NSString+Violation.h"
+#import "ViolationControl.h"
 
-@implementation NSString(Violation)
-- (CGSize)sizeOfTextWithFont:(UIFont *)font
-{
-    CGSize textSize;
-    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
-    }
-    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [self sizeWithFont:font];
-    }
-    else {
-        // DEBT: And? Not that we're likely to get here.
-    }
-    return textSize;
-}
+@interface ViolationDirectionWheel : ViolationControl
+
+@property (nonatomic) double innerRadius;
+@property (nonatomic) double lineWidth;
+
+@property (nonatomic, readonly) BOOL isPressed;
+@property (nonatomic, readonly) double direction;
+
+@property (nonatomic, readonly) NSString* currentTitle;
+@property (nonatomic, readonly) UIImage* currentTitleImage;
+
+- (NSString*) titleForState:(UIControlState)state;
+- (UIImage*) titleImageForState:(UIControlState)state;
+- (void) setTitle:(NSString*)title forState:(UIControlState)state;
+- (void) setTitleImage:(UIImage*)image forState:(UIControlState)state;
 
 @end
