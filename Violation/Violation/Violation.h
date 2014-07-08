@@ -21,7 +21,6 @@ FOUNDATION_EXPORT double ViolationVersionNumber;
 //! Project version string for Violation.
 FOUNDATION_EXPORT const unsigned char ViolationVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Violation/PublicHeader.h>
 #import <Violation/NSString+Violation.h>
 #import <Violation/ViolationDirectedPressGestureRecognizer.h>
 #import <Violation/ViolationDirectionWheel.h> // imports ViolationControl.h, so no need for explicit import

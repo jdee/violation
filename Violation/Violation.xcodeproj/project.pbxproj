@@ -28,6 +28,13 @@
 			remoteGlobalIDString = 7BAD8C4E196C69F700E8D2B1;
 			remoteInfo = Violation;
 		};
+		7BAD8C88196C824200E8D2B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAD8C46196C69F700E8D2B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BAD8C4E196C69F700E8D2B1;
+			remoteInfo = Violation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +181,7 @@
 			);
 			dependencies = (
 				7BAD8C5D196C69F700E8D2B1 /* PBXTargetDependency */,
+				7BAD8C89196C824200E8D2B1 /* PBXTargetDependency */,
 			);
 			name = ViolationTests;
 			productName = ViolationTests;
@@ -262,6 +270,11 @@
 			target = 7BAD8C4E196C69F700E8D2B1 /* Violation */;
 			targetProxy = 7BAD8C5C196C69F700E8D2B1 /* PBXContainerItemProxy */;
 		};
+		7BAD8C89196C824200E8D2B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BAD8C4E196C69F700E8D2B1 /* Violation */;
+			targetProxy = 7BAD8C88196C824200E8D2B1 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -300,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -339,7 +352,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
