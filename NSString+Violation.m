@@ -15,10 +15,6 @@
 
 #import "NSString+Violation.h"
 
-@protocol NSStringDeprecatedMethods
-- (CGSize)sizeWithFont:(UIFont*)font;
-@end
-
 @implementation NSString(Violation)
 - (CGSize)sizeOfTextWithFont:(UIFont *)font
 {
@@ -27,11 +23,9 @@
         // iOS 7+
         textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
     }
-    else {
+    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
         // iOS 5 & 6
-        // following http://vgable.com/blog/2009/06/15/ignoring-just-one-deprecated-warning/
-        id<NSStringDeprecatedMethods> string = (id<NSStringDeprecatedMethods>)self;
-        textSize = [string sizeWithFont:font];
+        textSize = [self sizeWithFont:font];
     }
     return textSize;
 }
