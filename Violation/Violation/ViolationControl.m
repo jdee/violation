@@ -55,6 +55,11 @@
     [self updateImage];
 }
 
+- (void)tintColorDidChange
+{
+    [self updateImage];
+}
+
 /*
  * Private method used by imageForState: and setImage:forState:.
  * For a pure state (only one bit set) other than normal, returns that bit + 1. If no

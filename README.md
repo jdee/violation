@@ -9,30 +9,33 @@ The word _violation_ is a loaded term in computing, referring to a runtime error
 the failure to observe the terms of a license. It's short and memorable, and happily
 it does not conflict with other software companies or products.
 
-Quick start
-===========
+Requirements
+============
 
 Violation is an iOS framework you can build and import as an external dependency to any iOS
 project. Building iOS frameworks is new in Xcode 6. You cannot build Violation directly with
 Xcode 5 or lower. Xcode 6 is required.
 
-There are two demo apps for Violation: one in Objective-C and one in Swift. The content of
-each app is the same. You can run them both on any device or simulator with iOS 6.0 or higher.
+Violation requires iOS 6.0 or higher.
+
+Quick demo
+==========
 
 Open the Violation.xcworkspace file in this directory using Xcode 6, either by double-clicking
-the file or using File > Open in Xcode. The workspace contains projects to build both demos and
-the framework. In the upper lefthand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
-or ViolationDemo-Swift) and a device or simulator to run on. Unlock the device if it's locked.
-Click the triangular run button to the left. The framework and app will be built and run on the
-device or simulator.
+the file or using File > Open in Xcode. The workspace contains projects to build the framework
+and two demos. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
+or ViolationDemo-Swift; the contents of the apps are the same) and a device or simulator to run on. 
+Unlock the device if it's locked. Click the triangular run button to the left. The framework and app 
+will be built and run on the device or simulator.
 
 In this folder
 ==============
 
 There are three subdirectories here that contain Xcode projects. Violation contains the project
-to build the framework. ViolationDemo-ObjC and ViolationDemo-Swift contain the demo apps. The
-two demo projects share the same asset catalog, Images.xcassets in this directory. Violation.xcworkspace
-is used to build the framework and both the demo apps in the right order to satisfy dependencies.
+to build the framework. ViolationDemo-ObjC and ViolationDemo-Swift contain two demo apps. Each app has the
+same content; they are just examples of use in two different languages. The two demo projects share the
+same asset catalog, Images.xcassets in this directory. Violation.xcworkspace is used to build the framework
+and both the demo apps in the right order to satisfy dependencies.
 
 The IOSKnobControl subdirectory contains an external dependency for the demo apps.
 
