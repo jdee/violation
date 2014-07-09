@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0E346A196D953800FD542F /* Violation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0E3469196D953800FD542F /* Violation.framework */; };
 		7B11AFE9196A3C9800CCDE2B /* IOSKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11AFE8196A3C9800CCDE2B /* IOSKnobControl.m */; };
 		7B5F1CC51968A96B002F512E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC41968A96B002F512E /* main.m */; };
 		7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */; };
@@ -15,7 +16,6 @@
 		7B5F1CD11968A96B002F512E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCF1968A96B002F512E /* Main.storyboard */; };
 		7B5F1CD31968A96B002F512E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CD21968A96B002F512E /* Images.xcassets */; };
 		7B5F1CDF1968A96B002F512E /* ViolationDemo_ObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F1CDE1968A96B002F512E /* ViolationDemo_ObjCTests.m */; };
-		7B7B3F6B196C9C0E005757F1 /* Violation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7B3F6A196C9C0E005757F1 /* Violation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B0E3469196D953800FD542F /* Violation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Violation.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Products/Debug-iphoneos/Violation.framework"; sourceTree = "<group>"; };
 		7B11AFE7196A3C9800CCDE2B /* IOSKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKnobControl.h; sourceTree = "<group>"; };
 		7B11AFE8196A3C9800CCDE2B /* IOSKnobControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSKnobControl.m; sourceTree = "<group>"; };
 		7B5F1CBF1968A96B002F512E /* ViolationDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViolationDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +46,6 @@
 		7B5F1CD81968A96B002F512E /* ViolationDemo-ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ViolationDemo-ObjCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5F1CDD1968A96B002F512E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5F1CDE1968A96B002F512E /* ViolationDemo_ObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViolationDemo_ObjCTests.m; sourceTree = "<group>"; };
-		7B7B3F6A196C9C0E005757F1 /* Violation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Violation.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Violation-fuknvkmptoeovjfaqmzaxqtqqgwh/Build/Products/Debug-iphoneos/Violation.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B7B3F6B196C9C0E005757F1 /* Violation.framework in Frameworks */,
+				7B0E346A196D953800FD542F /* Violation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,10 +80,10 @@
 		7B5F1CB61968A96B002F512E = {
 			isa = PBXGroup;
 			children = (
+				7B0E3469196D953800FD542F /* Violation.framework */,
 				7B5F1CC11968A96B002F512E /* ViolationDemo-ObjC */,
 				7B5F1CDB1968A96B002F512E /* ViolationDemo-ObjCTests */,
 				7B11AFE6196A3C9800CCDE2B /* IOSKnobControl */,
-				7B7B3F6A196C9C0E005757F1 /* Violation.framework */,
 				7B5F1CC01968A96B002F512E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -363,6 +363,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-fuknvkmptoeovjfaqmzaxqtqqgwh/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ViolationWorkspace-dffanclywvdglhcwlbehnybjplzt/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "ViolationDemo-ObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -378,6 +380,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-fuknvkmptoeovjfaqmzaxqtqqgwh/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ViolationWorkspace-dffanclywvdglhcwlbehnybjplzt/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "ViolationDemo-ObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
