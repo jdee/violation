@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ViolationDemo-Swift/ViolationDemo-Swift.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Violation/Violation.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:ViolationDemo-ObjC/ViolationDemo-ObjC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ViolationDemo-Swift/ViolationDemo-Swift.xcodeproj">
    </FileRef>
 </Workspace>
