@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B7861C1196F2D0D00727E36 /* ViolationStringExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7861C0196F2D0D00727E36 /* ViolationStringExtensionTests.m */; };
 		7BAD8C55196C69F700E8D2B1 /* Violation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C54196C69F700E8D2B1 /* Violation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C5B196C69F700E8D2B1 /* Violation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAD8C4F196C69F700E8D2B1 /* Violation.framework */; };
-		7BAD8C62196C69F700E8D2B1 /* ViolationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C61196C69F700E8D2B1 /* ViolationTests.m */; };
 		7BAD8C74196C7E6900E8D2B1 /* NSString+Violation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C6C196C7E6900E8D2B1 /* NSString+Violation.m */; };
 		7BAD8C76196C7E6900E8D2B1 /* ViolationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C6E196C7E6900E8D2B1 /* ViolationControl.m */; };
 		7BAD8C78196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C70196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m */; };
@@ -21,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7B7861C2196F2E6A00727E36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BAD8C46196C69F700E8D2B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BAD8C4E196C69F700E8D2B1;
+			remoteInfo = Violation;
+		};
 		7BAD8C5C196C69F700E8D2B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7BAD8C46196C69F700E8D2B1 /* Project object */;
@@ -45,12 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B7861C0196F2D0D00727E36 /* ViolationStringExtensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationStringExtensionTests.m; sourceTree = "<group>"; };
 		7BAD8C4F196C69F700E8D2B1 /* Violation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Violation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAD8C53196C69F700E8D2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAD8C54196C69F700E8D2B1 /* Violation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Violation.h; sourceTree = "<group>"; };
 		7BAD8C5A196C69F700E8D2B1 /* ViolationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViolationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAD8C60196C69F700E8D2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BAD8C61196C69F700E8D2B1 /* ViolationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViolationTests.m; sourceTree = "<group>"; };
 		7BAD8C6B196C7E6900E8D2B1 /* NSString+Violation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Violation.h"; sourceTree = "<group>"; };
 		7BAD8C6C196C7E6900E8D2B1 /* NSString+Violation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Violation.m"; sourceTree = "<group>"; };
 		7BAD8C6D196C7E6900E8D2B1 /* ViolationControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationControl.h; sourceTree = "<group>"; };
@@ -126,7 +133,7 @@
 		7BAD8C5E196C69F700E8D2B1 /* ViolationTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BAD8C61196C69F700E8D2B1 /* ViolationTests.m */,
+				7B7861C0196F2D0D00727E36 /* ViolationStringExtensionTests.m */,
 				7BAD8C5F196C69F700E8D2B1 /* Supporting Files */,
 			);
 			path = ViolationTests;
@@ -190,6 +197,7 @@
 				7BAD8C5D196C69F700E8D2B1 /* PBXTargetDependency */,
 				7BAD8C89196C824200E8D2B1 /* PBXTargetDependency */,
 				7BAD8C8B196C824200E8D2B1 /* PBXTargetDependency */,
+				7B7861C3196F2E6A00727E36 /* PBXTargetDependency */,
 			);
 			name = ViolationTests;
 			productName = ViolationTests;
@@ -266,13 +274,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BAD8C62196C69F700E8D2B1 /* ViolationTests.m in Sources */,
+				7B7861C1196F2D0D00727E36 /* ViolationStringExtensionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7B7861C3196F2E6A00727E36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BAD8C4E196C69F700E8D2B1 /* Violation */;
+			targetProxy = 7B7861C2196F2E6A00727E36 /* PBXContainerItemProxy */;
+		};
 		7BAD8C5D196C69F700E8D2B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7BAD8C4E196C69F700E8D2B1 /* Violation */;
