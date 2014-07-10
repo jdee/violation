@@ -19,11 +19,18 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+ * If using a version of Xcode below 6, which is required to build Violation as a framework, #define VIOLATION_NO_FRAMEWORK.
+ * This will let you simply insert the source code for Violation into your project and #import <Violation/Violation.h>
+ * normally. These version numbers will not be available.
+ */
+#ifndef VIOLATION_NO_FRAMEWORK
 //! Project version number for Violation.
 FOUNDATION_EXPORT double ViolationVersionNumber;
 
 //! Project version string for Violation.
 FOUNDATION_EXPORT const unsigned char ViolationVersionString[];
+#endif // VIOLATION_NO_FRAMEWORK
 
 #import <Violation/ViolationDirectedPressGestureRecognizer.h>
 #import <Violation/ViolationDirectionWheel.h> // imports ViolationControl.h, so no need for explicit import
