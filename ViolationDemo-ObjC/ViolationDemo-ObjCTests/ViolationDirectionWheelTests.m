@@ -32,7 +32,7 @@
     wheel = [[ViolationDirectionWheel alloc] initWithFrame:CGRectZero];
 }
 
-#pragma mark - Images
+#pragma mark - Images (base class)
 
 - (void)testDisabledImageHandling {
     // with a normal image and a disabled image, a disabled knob control should use the disabled one.
@@ -64,7 +64,7 @@
     XCTAssertEqual(starImage, [wheel imageForState:UIControlStateSelected], @"wheel should use normal image in selected state without a selected image");
 }
 
-#pragma mark - Fill Colors
+#pragma mark - Fill Colors (base class)
 
 - (void)testDisabledFillColorHandling {
     // with a normal fill color and a disabled fill color, a disabled knob control should use the disabled one.
@@ -96,7 +96,7 @@
     XCTAssertEqual([UIColor yellowColor], [wheel fillColorForState:UIControlStateSelected], @"wheel should use normal fill color in selected state without a selected fill color");
 }
 
-#pragma mark - Title Colors
+#pragma mark - Title Colors (base class)
 
 - (void)testDisabledTitleColorHandling {
     // with a normal title color and a disabled title color, a disabled knob control should use the disabled one.
@@ -126,6 +126,70 @@
 
     [wheel setTitleColor:nil forState:UIControlStateSelected];
     XCTAssertEqual([UIColor yellowColor], [wheel titleColorForState:UIControlStateSelected], @"wheel should use normal title color in selected state without a selected title color");
+}
+
+#pragma mark - Titles
+
+- (void)testDisabledTitleHandling {
+    // with a normal title and a disabled title, a disabled knob control should use the disabled one.
+    [wheel setTitle:@"normal" forState:UIControlStateNormal];
+    [wheel setTitle:@"disabled" forState:UIControlStateDisabled];
+    XCTAssertEqual(@"disabled", [wheel titleForState:UIControlStateDisabled], @"wheel should use disabled title in disabled state");
+
+    [wheel setTitle:nil forState:UIControlStateDisabled];
+    XCTAssertEqual(@"normal", [wheel titleForState:UIControlStateDisabled], @"wheel should use normal title in disabled state without a disabled title");
+}
+
+- (void)testHighlightedTitleHandling {
+    // with a normal title and a highlighted title, a highlighted knob control should use the highlighted one.
+    [wheel setTitle:@"normal" forState:UIControlStateNormal];
+    [wheel setTitle:@"highlighted" forState:UIControlStateHighlighted];
+    XCTAssertEqual(@"highlighted", [wheel titleForState:UIControlStateHighlighted], @"wheel should use highlighted title in highlighted state");
+
+    [wheel setTitle:nil forState:UIControlStateHighlighted];
+    XCTAssertEqual(@"normal", [wheel titleForState:UIControlStateHighlighted], @"wheel should use normal title in highlighted state without a highlighted title");
+}
+
+- (void)testSelectedTitleHandling {
+    // with a normal title and a selected title, a selected knob control should use the selected one.
+    [wheel setTitle:@"normal" forState:UIControlStateNormal];
+    [wheel setTitle:@"selected" forState:UIControlStateSelected];
+    XCTAssertEqual(@"selected", [wheel titleForState:UIControlStateSelected], @"wheel should use selected title in selected state");
+
+    [wheel setTitle:nil forState:UIControlStateSelected];
+    XCTAssertEqual(@"normal", [wheel titleForState:UIControlStateSelected], @"wheel should use normal title in selected state without a selected title");
+}
+
+#pragma mark - Title images
+
+- (void)testDisabledTitleImageHandling {
+    // with a normal title image and a disabled title image, a disabled knob control should use the disabled one.
+    [wheel setTitleImage:starImage forState:UIControlStateNormal];
+    [wheel setTitleImage:wheelImage forState:UIControlStateDisabled];
+    XCTAssertEqual(wheelImage, [wheel titleImageForState:UIControlStateDisabled], @"wheel should use disabled title image in disabled state");
+
+    [wheel setTitleImage:nil forState:UIControlStateDisabled];
+    XCTAssertEqual(starImage, [wheel titleImageForState:UIControlStateDisabled], @"wheel should use normal title image in disabled state without a disabled title image");
+}
+
+- (void)testHighlightedTitleImageHandling {
+    // with a normal title image and a highlighted title image, a highlighted knob control should use the highlighted one.
+    [wheel setTitleImage:starImage forState:UIControlStateNormal];
+    [wheel setTitleImage:wheelImage forState:UIControlStateHighlighted];
+    XCTAssertEqual(wheelImage, [wheel titleImageForState:UIControlStateHighlighted], @"wheel should use highlighted title image in highlighted state");
+
+    [wheel setTitleImage:nil forState:UIControlStateHighlighted];
+    XCTAssertEqual(starImage, [wheel titleImageForState:UIControlStateHighlighted], @"wheel should use normal title image in highlighted state without a highlighted title image");
+}
+
+- (void)testSelectedTitleImageHandling {
+    // with a normal title image and a selected title image, a selected knob control should use the selected one.
+    [wheel setTitleImage:starImage forState:UIControlStateNormal];
+    [wheel setTitleImage:wheelImage forState:UIControlStateSelected];
+    XCTAssertEqual(wheelImage, [wheel titleImageForState:UIControlStateSelected], @"wheel should use selected title image in selected state");
+
+    [wheel setTitleImage:nil forState:UIControlStateSelected];
+    XCTAssertEqual(starImage, [wheel titleImageForState:UIControlStateSelected], @"wheel should use normal title image in selected state without a selected title image");
 }
 
 @end
