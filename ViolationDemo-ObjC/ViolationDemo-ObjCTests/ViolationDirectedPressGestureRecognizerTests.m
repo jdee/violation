@@ -17,6 +17,33 @@
 #import <Violation/Violation.h>
 #import <XCTest/XCTest.h>
 
+/*
+ * This partial just mocks the locationInView: method from the base class (UIGestureRecognizer), which
+ * will return whatever point is passed to the initializer.
+ */
+@interface PartiallyMockedDirectedPressGestureRecognizer : ViolationDirectedPressGestureRecognizer
+@property (nonatomic) CGPoint point;
+- (instancetype) initWithPoint:(CGPoint)point;
+@end
+
+@implementation PartiallyMockedDirectedPressGestureRecognizer
+
+- (instancetype)initWithPoint:(CGPoint)point
+{
+    self = [super initWithTarget:nil action:nil];
+    if (self) {
+        _point = point;
+    }
+    return self;
+}
+
+- (CGPoint)locationInView:(UIView *)view
+{
+    return _point;
+}
+
+@end
+
 @interface ViolationDirectedPressGestureRecognizerTests : XCTestCase {
     ViolationDirectedPressGestureRecognizer* gestureRecognizer;
 }
@@ -31,16 +58,15 @@
     gestureRecognizer = [[ViolationDirectedPressGestureRecognizer alloc] initWithTarget:nil action:nil];
 }
 
-- (void)testGestureBegin {
+- (void)testTouchBegin {
     UITouch* firstTouch = [[UITouch alloc] init];
-
     NSSet* oneTouch = [NSSet setWithObject:firstTouch];
 
     [gestureRecognizer touchesBegan:oneTouch withEvent:nil];
     XCTAssertEqual(UIGestureRecognizerStateBegan, gestureRecognizer.state, @"gesture recognizer should be in began state");
 }
 
-- (void)testGestureFail {
+- (void)testGestureFailWithMultipleTouches {
     UITouch* firstTouch = [[UITouch alloc] init];
     UITouch* secondTouch = [[UITouch alloc] init];
 
@@ -49,19 +75,75 @@
     XCTAssertEqual(UIGestureRecognizerStateFailed, gestureRecognizer.state, @"gesture recognizer should be in failed state with multiple touches");
 }
 
-- (void)testGestureChanged {
+- (void)testTouchMoved {
+    gestureRecognizer = nil;
+
     /*
-     * Have to mock the position in a view, which the GR doesn't currently have.
+     * Need to use a dummy view for this test with specified bounds
      */
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
+
+    // mock GR will return the center of the view as the location of the last touch
+    PartiallyMockedDirectedPressGestureRecognizer* partialMock = [[PartiallyMockedDirectedPressGestureRecognizer alloc] initWithPoint:CGPointMake(view.bounds.size.width*0.5, view.bounds.size.height*0.5)];
+    [view addGestureRecognizer:partialMock];
+
+    // The initial touch just sets the state to began, to prep for the actual test.
+    UITouch* touch = [[UITouch alloc] init];
+    NSSet* touches = [NSSet setWithObject:touch];
+    [partialMock touchesBegan:touches withEvent:nil];
+    XCTAssertEqual(UIGestureRecognizerStateBegan, partialMock.state, @"gesture recognizer should be in began state");
+
+    /*
+     * Now the actual test. The GR is in the began state. Now the touch moves.
+     */
+    [partialMock touchesMoved:touches withEvent:nil];
+    XCTAssertEqual(UIGestureRecognizerStateChanged, partialMock.state, @"gesture recognizer should be in changed state");
+
+    [view removeGestureRecognizer:partialMock];
+}
+
+- (void)testTouchMovedOutOfBounds {
+    gestureRecognizer = nil;
+
+    /*
+     * Need to use a dummy view for this test with specified bounds
+     */
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
+
+    // mock GR will return a point outside the view as the location of the last touch
+    PartiallyMockedDirectedPressGestureRecognizer* partialMock = [[PartiallyMockedDirectedPressGestureRecognizer alloc] initWithPoint:CGPointMake(view.bounds.size.width*1.1, view.bounds.size.height*1.1)];
+    [view addGestureRecognizer:partialMock];
+
+    // The initial touch just sets the state to began, to prep for the actual test.
+    UITouch* touch = [[UITouch alloc] init];
+    NSSet* touches = [NSSet setWithObject:touch];
+    [partialMock touchesBegan:touches withEvent:nil];
+    XCTAssertEqual(UIGestureRecognizerStateBegan, partialMock.state, @"gesture recognizer should be in began state");
+
+    /*
+     * Now the actual test. The GR is in the began state. Now the touch moves.
+     */
+    [partialMock touchesMoved:touches withEvent:nil];
+    XCTAssertEqual(UIGestureRecognizerStateCancelled, partialMock.state, @"gesture recognizer should be in changed state");
+
+    [view removeGestureRecognizer:partialMock];
 }
 
 - (void)testGestureEnd {
     UITouch* firstTouch = [[UITouch alloc] init];
-
     NSSet* oneTouch = [NSSet setWithObject:firstTouch];
 
     [gestureRecognizer touchesEnded:oneTouch withEvent:nil];
     XCTAssertEqual(UIGestureRecognizerStateEnded, gestureRecognizer.state, @"gesture recognizer should be in ended state");
+}
+
+- (void)testTouchCancel {
+    UITouch* firstTouch = [[UITouch alloc] init];
+    NSSet* oneTouch = [NSSet setWithObject:firstTouch];
+
+    [gestureRecognizer touchesBegan:oneTouch withEvent:nil];
+    [gestureRecognizer touchesCancelled:oneTouch withEvent:nil];
+    XCTAssertEqual(UIGestureRecognizerStateCancelled, gestureRecognizer.state, @"gesture recognizer should be in cancelled state");
 }
 
 @end
