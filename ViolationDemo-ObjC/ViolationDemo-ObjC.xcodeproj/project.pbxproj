@@ -16,6 +16,7 @@
 		7B5F1CD11968A96B002F512E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CCF1968A96B002F512E /* Main.storyboard */; };
 		7B5F1CD31968A96B002F512E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F1CD21968A96B002F512E /* Images.xcassets */; };
 		7B7861CC196F2F6300727E36 /* ViolationDirectionWheelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7861CB196F2F6300727E36 /* ViolationDirectionWheelTests.m */; };
+		7B7861CE196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7861CD196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7B5F1CD81968A96B002F512E /* ViolationDemo-ObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ViolationDemo-ObjCTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5F1CDD1968A96B002F512E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B7861CB196F2F6300727E36 /* ViolationDirectionWheelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectionWheelTests.m; sourceTree = "<group>"; };
+		7B7861CD196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectedPressGestureRecognizerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5F1CDC1968A96B002F512E /* Supporting Files */,
+				7B7861CD196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m */,
 				7B7861CB196F2F6300727E36 /* ViolationDirectionWheelTests.m */,
 			);
 			path = "ViolationDemo-ObjCTests";
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B7861CC196F2F6300727E36 /* ViolationDirectionWheelTests.m in Sources */,
+				7B7861CE196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
