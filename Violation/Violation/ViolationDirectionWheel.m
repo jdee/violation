@@ -25,7 +25,7 @@
 @implementation ViolationDirectionWheel {
     NSString* titles[4];
     UIImage* titleImages[4];
-    CALayer* wheelLayer;
+    CALayer* wheelLayer, *titleLayer;
 }
 
 @dynamic fontSizeForTitle, radius, currentTitle;
@@ -148,61 +148,24 @@
 - (void)updateImage
 {
     UIImage* currentImage = self.currentImage;
+    [titleLayer removeFromSuperlayer];
     [wheelLayer removeFromSuperlayer];
-    wheelLayer = [CALayer layer];
 
     if (currentImage) {
+        wheelLayer = [CALayer layer];
         wheelLayer.contents = (id)currentImage.CGImage;
+        [self.layer addSublayer:wheelLayer];
     }
     else {
-        [self drawWheel];
+        [self setNeedsDisplay];
     }
 
-    [self.layer addSublayer:wheelLayer];
+    [self drawTitle];
 }
 
-- (void)drawWheel
+- (void)drawRect:(CGRect)rect
 {
     const CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
-
-    // outer ring, tangent to bounds (in square view)
-    CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = [UIBezierPath bezierPathWithArcCenter:center radius:self.radius startAngle:0.0 endAngle:2.0*M_PI clockwise:NO].CGPath;
-    shapeLayer.lineWidth = _lineWidth;
-    shapeLayer.strokeColor = self.currentTitleColor.CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = [UIColor clearColor].CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
-
-    // filled annulus
-    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:center radius:self.radius-0.5*_lineWidth startAngle:0.0 endAngle:2.0*M_PI clockwise:NO];
-    [path addArcWithCenter:center radius:_innerRadius+0.5*_lineWidth startAngle:0.0 endAngle:2.0*M_PI clockwise:YES];
-
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.lineWidth = 0.0;
-    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = self.currentFillColor.CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
-
-    // inner ring
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = [UIBezierPath bezierPathWithArcCenter:center radius:_innerRadius startAngle:0.0 endAngle:2.0*M_PI clockwise:YES].CGPath;
-    shapeLayer.lineWidth = _lineWidth;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.strokeColor = self.currentTitleColor.CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
 
     const double ringThickness = self.radius - _innerRadius;
 
@@ -211,107 +174,86 @@
     const double triangleHeight = outerTriangleDistance - innerTriangleDistance;
     const double tanPiOver6 = tan(M_PI/6);
 
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, _lineWidth);
+    CGContextSetStrokeColorWithColor(context, self.currentTitleColor.CGColor);
+    CGContextSetFillColorWithColor(context, self.currentFillColor.CGColor);
+
+    // outer ring, tangent to bounds (in square view)
+    CGContextAddArc(context, center.x, center.y, self.radius, 0.0, 2.0*M_PI, NO);
+    CGContextStrokePath(context);
+
+    // filled annulus
+    CGContextAddArc(context, center.x, center.y, self.radius-0.5*_lineWidth, 0.0, 2.0*M_PI, NO);
+    CGContextAddArc(context, center.x, center.y, _innerRadius+0.5*_lineWidth, 2.0*M_PI, 0.0, YES);
+    CGContextFillPath(context);
+
+    // inner ring
+    CGContextAddArc(context, center.x, center.y, _innerRadius, 0.0, 2.0*M_PI, NO);
+    CGContextStrokePath(context);
+
+    // triangles
+    CGContextSetFillColorWithColor(context, self.currentTitleColor.CGColor);
+
     // north
-    path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(center.x, center.y-outerTriangleDistance)];
-    [path addLineToPoint:CGPointMake(center.x-triangleHeight*tanPiOver6, center.y-innerTriangleDistance)];
-    [path addLineToPoint:CGPointMake(center.x+triangleHeight*tanPiOver6, center.y-innerTriangleDistance)];
-
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.lineWidth = 0.0;
-    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = self.currentTitleColor.CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
+    CGContextMoveToPoint(context, center.x, center.y-outerTriangleDistance);
+    CGContextAddLineToPoint(context, center.x-triangleHeight*tanPiOver6, center.y-innerTriangleDistance);
+    CGContextAddLineToPoint(context, center.x+triangleHeight*tanPiOver6, center.y-innerTriangleDistance);
+    CGContextFillPath(context);
 
     // south
-    path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(center.x, center.y+outerTriangleDistance)];
-    [path addLineToPoint:CGPointMake(center.x-triangleHeight*tanPiOver6, center.y+innerTriangleDistance)];
-    [path addLineToPoint:CGPointMake(center.x+triangleHeight*tanPiOver6, center.y+innerTriangleDistance)];
-
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.lineWidth = 0.0;
-    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = self.currentTitleColor.CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
+    CGContextMoveToPoint(context, center.x, center.y+outerTriangleDistance);
+    CGContextAddLineToPoint(context, center.x-triangleHeight*tanPiOver6, center.y+innerTriangleDistance);
+    CGContextAddLineToPoint(context, center.x+triangleHeight*tanPiOver6, center.y+innerTriangleDistance);
+    CGContextFillPath(context);
 
     // east
-    path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(center.x+outerTriangleDistance, center.y)];
-    [path addLineToPoint:CGPointMake(center.x+innerTriangleDistance, center.y-tanPiOver6*triangleHeight)];
-    [path addLineToPoint:CGPointMake(center.x+innerTriangleDistance, center.y+tanPiOver6*triangleHeight)];
-
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.lineWidth = 0.0;
-    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = self.currentTitleColor.CGColor;
-
-    [wheelLayer addSublayer:shapeLayer];
+    CGContextMoveToPoint(context, center.x+outerTriangleDistance, center.y);
+    CGContextAddLineToPoint(context, center.x+innerTriangleDistance, center.y-tanPiOver6*triangleHeight);
+    CGContextAddLineToPoint(context, center.x+innerTriangleDistance, center.y+tanPiOver6*triangleHeight);
+    CGContextFillPath(context);
 
     // west
-    path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(center.x-outerTriangleDistance, center.y)];
-    [path addLineToPoint:CGPointMake(center.x-innerTriangleDistance, center.y-tanPiOver6*triangleHeight)];
-    [path addLineToPoint:CGPointMake(center.x-innerTriangleDistance, center.y+tanPiOver6*triangleHeight)];
+    CGContextMoveToPoint(context, center.x-outerTriangleDistance, center.y);
+    CGContextAddLineToPoint(context, center.x-innerTriangleDistance, center.y-tanPiOver6*triangleHeight);
+    CGContextAddLineToPoint(context, center.x-innerTriangleDistance, center.y+tanPiOver6*triangleHeight);
+    CGContextFillPath(context);
+}
 
-    shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.lineWidth = 0.0;
-    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
-    shapeLayer.frame = self.bounds;
-    shapeLayer.opaque = NO;
-    shapeLayer.backgroundColor = [UIColor clearColor].CGColor;
-    shapeLayer.fillColor = self.currentTitleColor.CGColor;
+- (void)drawTitle
+{
+    if (!self.currentTitleImage && !self.currentTitle) return;
 
-    [wheelLayer addSublayer:shapeLayer];
+    const CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
+    CGRect frame;
 
     // optional title
     if (self.currentTitleImage) {
-        CALayer* titleImageLayer = [CALayer layer];
-        titleImageLayer.contents = (id)self.currentTitleImage;
-        titleImageLayer.backgroundColor = [UIColor clearColor].CGColor;
-        titleImageLayer.opaque = NO;
+        titleLayer = [CALayer layer];
+        titleLayer.contents = (id)self.currentTitleImage;
 
         const double dimension = (_innerRadius - 0.5*_lineWidth) * sqrt(2.0);
-        CGRect frame;
         frame.size.width = frame.size.height = dimension;
-        frame.origin.x = center.x - 0.5*frame.size.width;
-        frame.origin.y = center.y - 0.5*frame.size.height;
-        titleImageLayer.frame = frame;
-        [wheelLayer addSublayer:titleImageLayer];
     }
     else if (self.currentTitle) {
-        CATextLayer* titleLayer = [CATextLayer layer];
-        titleLayer.string = self.currentTitle;
-        titleLayer.alignmentMode = kCAAlignmentCenter;
-        titleLayer.fontSize = self.fontSizeForTitle;
-        titleLayer.backgroundColor = [UIColor clearColor].CGColor;
-        titleLayer.foregroundColor = self.currentTitleColor.CGColor;
-        titleLayer.opaque = NO;
+        CATextLayer* titleTextLayer = [CATextLayer layer];
+        titleTextLayer.string = self.currentTitle;
+        titleTextLayer.alignmentMode = kCAAlignmentCenter;
+        titleTextLayer.fontSize = self.fontSizeForTitle;
+        titleTextLayer.foregroundColor = self.currentTitleColor.CGColor;
 
-        UIFont* font = [UIFont fontWithName:@"Helvetica" size:titleLayer.fontSize];
-        CGRect frame;
+        UIFont* font = [UIFont fontWithName:@"Helvetica" size:titleTextLayer.fontSize];
         frame.size = [self.currentTitle sizeOfTextWithFont:font];
-        frame.origin.x = center.x - 0.5*frame.size.width;
-        frame.origin.y = center.y - 0.5*frame.size.height;
-        titleLayer.frame = frame;
 
-        [wheelLayer addSublayer:titleLayer];
+        titleLayer = titleTextLayer;
     }
+
+    frame.origin.x = center.x - 0.5*frame.size.width;
+    frame.origin.y = center.y - 0.5*frame.size.height;
+    titleLayer.frame = frame;
+    titleLayer.backgroundColor = [UIColor clearColor].CGColor;
+    titleLayer.opaque = NO;
+    [self.layer addSublayer:titleLayer];
 }
 
 - (double)radius
