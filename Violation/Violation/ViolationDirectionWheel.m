@@ -25,7 +25,7 @@
 @implementation ViolationDirectionWheel {
     NSString* titles[4];
     UIImage* titleImages[4];
-    CALayer* wheelLayer, *titleLayer;
+    CALayer* titleLayer;
 }
 
 @dynamic fontSizeForTitle, radius, currentTitle;
@@ -147,23 +147,25 @@
 
 - (void)updateImage
 {
-    UIImage* currentImage = self.currentImage;
+    [self setNeedsDisplay];
+
     [titleLayer removeFromSuperlayer];
-    [wheelLayer removeFromSuperlayer];
-
-    if (currentImage) {
-        wheelLayer = [CALayer layer];
-        wheelLayer.contents = (id)currentImage.CGImage;
-        [self.layer addSublayer:wheelLayer];
-    }
-    else {
-        [self setNeedsDisplay];
-    }
-
     [self drawTitle];
 }
 
 - (void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIImage* currentImage = self.currentImage;
+    if (currentImage) {
+        CGContextDrawImage(context, rect, currentImage.CGImage);
+    }
+    else {
+        [self drawWheelInRect:rect withContext:context];
+    }
+}
+
+- (void)drawWheelInRect:(CGRect)rect withContext:(CGContextRef)context
 {
     const CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
 
@@ -174,7 +176,6 @@
     const double triangleHeight = outerTriangleDistance - innerTriangleDistance;
     const double tanPiOver6 = tan(M_PI/6);
 
-    CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, _lineWidth);
     CGContextSetStrokeColorWithColor(context, self.currentTitleColor.CGColor);
     CGContextSetFillColorWithColor(context, self.currentFillColor.CGColor);
