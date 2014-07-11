@@ -14,7 +14,9 @@ Requirements
 
 Violation is an iOS framework you can build and import as an external dependency to any iOS
 project. Building iOS frameworks is new in Xcode 6. You cannot build Violation directly with
-Xcode 5 or lower. Xcode 6 is required.
+Xcode 5 or lower. Xcode 6 is required. (*Warning:* There is a bug in Xcode6-Beta3 involving
+iOS frameworks and modules. The result is that you cannot build with the latest version of
+Xcode. Use Xcode6-Beta2 until the bug is fixed.)
 
 Violation requires iOS 6.0 or higher.
 
