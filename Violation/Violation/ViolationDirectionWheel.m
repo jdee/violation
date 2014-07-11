@@ -220,11 +220,9 @@
     CGContextAddLineToPoint(context, center.x-innerTriangleDistance, center.y+tanPiOver6*triangleHeight);
     CGContextFillPath(context);
 
-    CGRect frame;
-
     if (self.currentTitleImage) {
         const double dimension = (_innerRadius - 0.5*_lineWidth) * sqrt(2.0);
-        frame.size.width = frame.size.height = dimension;
+        CGRect frame = CGRectMake(center.x-0.5*dimension, center.y-0.5*dimension, dimension, dimension);
         CGContextDrawImage(context, frame, self.currentTitleImage.CGImage);
     }
     else if (self.currentTitle) {
