@@ -1,6 +1,11 @@
 Violation
 =========
 
+```
+NOTE: This software is currently unreleased. Look for a release when Xcode 6 and iOS 8 near
+production.
+```
+
 Violation is a collection of utility software. For now, it's a framework comprising a custom
 gesture recognizer for iOS and a custom control that uses it. In the future, it may
 expand to include other sorts of software, for mobile platforms and otherwise.
