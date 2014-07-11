@@ -13,9 +13,13 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#import <CoreText/CoreText.h>
+
 #import "NSString+Violation.h"
 #import "ViolationDirectedPressGestureRecognizer.h"
 #import "ViolationDirectionWheel.h"
+
+#define VIOLATION_FONT_NAME @"Helvetica"
 
 @interface ViolationDirectionWheel()
 @property (readonly, nonatomic) double fontSizeForTitle;
@@ -25,7 +29,6 @@
 @implementation ViolationDirectionWheel {
     NSString* titles[4];
     UIImage* titleImages[4];
-    CALayer* titleLayer;
 }
 
 @dynamic fontSizeForTitle, radius, currentTitle;
@@ -148,9 +151,6 @@
 - (void)updateImage
 {
     [self setNeedsDisplay];
-
-    [titleLayer removeFromSuperlayer];
-    [self drawTitle];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -219,42 +219,50 @@
     CGContextAddLineToPoint(context, center.x-innerTriangleDistance, center.y-tanPiOver6*triangleHeight);
     CGContextAddLineToPoint(context, center.x-innerTriangleDistance, center.y+tanPiOver6*triangleHeight);
     CGContextFillPath(context);
-}
 
-- (void)drawTitle
-{
-    if (!self.currentTitleImage && !self.currentTitle) return;
-
-    const CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
     CGRect frame;
 
-    // optional title
     if (self.currentTitleImage) {
-        titleLayer = [CALayer layer];
-        titleLayer.contents = (id)self.currentTitleImage;
-
         const double dimension = (_innerRadius - 0.5*_lineWidth) * sqrt(2.0);
         frame.size.width = frame.size.height = dimension;
+        CGContextDrawImage(context, frame, self.currentTitleImage.CGImage);
     }
     else if (self.currentTitle) {
-        CATextLayer* titleTextLayer = [CATextLayer layer];
-        titleTextLayer.string = self.currentTitle;
-        titleTextLayer.alignmentMode = kCAAlignmentCenter;
-        titleTextLayer.fontSize = self.fontSizeForTitle;
-        titleTextLayer.foregroundColor = self.currentTitleColor.CGColor;
+        // compute the font size based on inner radius
+        double fontSize = self.fontSizeForTitle;
+        CGSize textSize = [self.currentTitle sizeOfTextWithFont:[UIFont fontWithName:VIOLATION_FONT_NAME size:fontSize]];
 
-        UIFont* font = [UIFont fontWithName:@"Helvetica" size:titleTextLayer.fontSize];
-        frame.size = [self.currentTitle sizeOfTextWithFont:font];
+        // Use CoreText to render directly
+        // from https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/CoreText_Programming/LayoutOperations/LayoutOperations.html#//apple_ref/doc/uid/TP40005533-CH12-SW2
 
-        titleLayer = titleTextLayer;
+        CTFontRef font = CTFontCreateWithName((CFStringRef)VIOLATION_FONT_NAME, fontSize, NULL);
+        CFStringRef keys[] = { kCTFontAttributeName };
+        CFTypeRef values[] = { font };
+
+        CFDictionaryRef attributes =
+        CFDictionaryCreate(kCFAllocatorDefault, (const void**)&keys,
+                           (const void**)&values, sizeof(keys) / sizeof(keys[0]),
+                           &kCFTypeDictionaryKeyCallBacks,
+                           &kCFTypeDictionaryValueCallBacks);
+        CFRelease(font);
+
+        // DEBT: may need a bridging retain or whatever when using self.currentTitle here.
+        CFAttributedStringRef attributed = CFAttributedStringCreate(kCFAllocatorDefault, (CFStringRef)self.currentTitle, attributes);
+        CFRelease(attributes);
+
+        CTLineRef line = CTLineCreateWithAttributedString(attributed);
+        CFRelease(attributed);
+
+        // flip y
+        CGContextTranslateCTM(context, 0, self.bounds.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+
+        // DEBT: This seemed like it should be center.y - 0.5*textSize.height. Empirically, in the demo, this is a little
+        // better. Need to investigate.
+        CGContextSetTextPosition(context, center.x - 0.5*textSize.width, center.y - 0.25*textSize.height);
+        CTLineDraw(line, context);
+        CFRelease(line);
     }
-
-    frame.origin.x = center.x - 0.5*frame.size.width;
-    frame.origin.y = center.y - 0.5*frame.size.height;
-    titleLayer.frame = frame;
-    titleLayer.backgroundColor = [UIColor clearColor].CGColor;
-    titleLayer.opaque = NO;
-    [self.layer addSublayer:titleLayer];
 }
 
 - (double)radius
