@@ -127,9 +127,9 @@
 		7B5F1CDB1968A96B002F512E /* ViolationDemo-ObjCTests */ = {
 			isa = PBXGroup;
 			children = (
-				7B5F1CDC1968A96B002F512E /* Supporting Files */,
 				7B7861CD196F3FE900727E36 /* ViolationDirectedPressGestureRecognizerTests.m */,
 				7B7861CB196F2F6300727E36 /* ViolationDirectionWheelTests.m */,
+				7B5F1CDC1968A96B002F512E /* Supporting Files */,
 			);
 			path = "ViolationDemo-ObjCTests";
 			sourceTree = "<group>";
