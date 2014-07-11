@@ -23,7 +23,7 @@ Violation requires iOS 6.0 or higher.
 Quick demo
 ==========
 
-Open the Violation.xcworkspace file in this directory using Xcode 6, either by double-clicking
+Open the Violation.xcworkspace file in this directory using Xcode6-Beta2, either by double-clicking
 the file or using File > Open in Xcode. The workspace contains projects to build the framework
 and two demos. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
 or ViolationDemo-Swift; the contents of the apps are the same) and a device or simulator to run on. 
