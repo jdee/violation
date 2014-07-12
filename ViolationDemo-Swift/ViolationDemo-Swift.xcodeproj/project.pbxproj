@@ -355,7 +355,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-fuknvkmptoeovjfaqmzaxqtqqgwh/Build/Products/Debug-iphoneos",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "ViolationDemo-Swift/Info.plist";
@@ -371,7 +370,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-fuknvkmptoeovjfaqmzaxqtqqgwh/Build/Products/Debug-iphoneos",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "ViolationDemo-Swift/Info.plist";

@@ -1,6 +1,24 @@
 {
   "images" : [
     {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "violation57x57.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "violation114x114.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "violation29x29.png",
+      "scale" : "1x"
+    },
+    {
       "size" : "29x29",
       "idiom" : "iphone",
       "filename" : "violation-58x58.png",
