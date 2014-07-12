@@ -17,10 +17,36 @@
 #import <UIKit/UIKit.h>
 
 /**
+ * @headerfile Violation.h <Violation/Violation.h>
+ *
  * The directed press is a continuous gesture. It begins any time a single touch goes down in its view.
  * It is canceled any time a second touch goes down, and it ends whenever the single touch comes up.
  * The target is invoked with the sender in the changed state any time the single touch moves. This gesture
  * recognizer simply allows the caller to track the position of a touch across a view.
+ * @code
+
+ - (void)handleDirectedPress:(ViolationDirectedPressGestureRecognizer*)sender
+ {
+   CGPoint location = [sender locationInView:sender.view];
+
+   switch (sender.state) {
+   case UIGestureRecognizerStateBegan:
+     // touch down in view, or reentered view after exiting, at location
+     break;
+   case UIGestureRecognizerStateCancelled:
+   case UIGestureRecognizerStateEnded:
+     // touch up/cancelled/exited view at location
+     break;
+   case UIGestureRecognizerStateChanged:
+     // touch moved in view to new location
+     break;
+   default:
+     break;
+   }
+ }
+
+ ViolationDirectedPressGestureRecognizer* directedPressGestureRecognizer = [[ViolationDirectedPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleDirectedPress:)];
+   @endcode
  */
 @interface ViolationDirectedPressGestureRecognizer : UIGestureRecognizer
 

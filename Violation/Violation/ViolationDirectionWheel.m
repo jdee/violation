@@ -22,10 +22,12 @@
 
 #define VIOLATION_FONT_NAME @"Helvetica"
 
+/// @cond PRIVATE
 @interface ViolationDirectionWheel()
 @property (readonly, nonatomic) double fontSizeForTitle;
 @property (readonly, nonatomic) double radius;
 @end
+/// @endcond
 
 @implementation ViolationDirectionWheel {
     NSString* titles[4];

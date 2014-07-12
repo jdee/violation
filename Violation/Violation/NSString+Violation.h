@@ -18,7 +18,9 @@
 
 /**
  * For portability among iOS versions, instead of
- * sizeWithFont: or sizeWithAttributes:.
+ * sizeWithFont: or sizeWithAttributes:. This class is only used as an internal 
+ * implementation mechanism and is not part of the public offering of the
+ * framework.
  */
 @interface NSString(Violation)
 - (CGSize)sizeOfTextWithFont:(UIFont*)font;

@@ -1,4 +1,11 @@
-/*
+/**
+ @mainpage Violation for iOS
+
+ https://github.com/jdee/violation
+
+ Violation is a framework for iOS providing UI components including a custom gesture recognizer (@ref ViolationDirectedPressGestureRecognizer)
+ and a custom control that uses it (@ref ViolationDirectionWheel). For instructions on using the framework in your build, see README.md.
+
  Violation
  Copyright (c) 2014, Jimmy Dee
  All rights reserved.
