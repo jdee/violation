@@ -30,7 +30,7 @@
 /// @endcond
 
 @implementation ViolationDirectionWheel {
-    NSString* titles[4];
+    NSString* titles[4]; // DEBT: Nice to use some sort of (copy) annotation here.
     UIImage* titleImages[4];
 }
 
@@ -73,14 +73,14 @@
 {
     NSString* title = titles[[self indexForState:state]];
     if (!title) title = titles[[self indexForState:UIControlStateNormal]];
-    return title;
+    return title.copy;
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
 {
     NSInteger index = [self indexForState:state];
     if (state == UIControlStateNormal || state == UIControlStateHighlighted || state == UIControlStateDisabled || state == UIControlStateSelected) {
-        titles[index] = title;
+        titles[index] = title.copy;
     }
 
     if (index == [self indexForState:self.state]) {
@@ -231,7 +231,7 @@
     else if (self.currentTitle) {
         // compute the font size based on inner radius
         double fontSize = self.fontSizeForTitle;
-        CGSize textSize = [self.currentTitle sizeOfTextWithFont:[UIFont fontWithName:VIOLATION_FONT_NAME size:fontSize]];
+        CGSize textSize = [self sizeOfString:self.currentTitle withFont:[UIFont fontWithName:VIOLATION_FONT_NAME size:fontSize]];
 
         // Use CoreText to render directly
         // from https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/CoreText_Programming/LayoutOperations/LayoutOperations.html#//apple_ref/doc/uid/TP40005533-CH12-SW2
@@ -284,18 +284,42 @@
 {
     // for the given title string, determine the size of the largest font that will fit it into the title space
     CGFloat fontSize = 0.0;
-    CGFloat fontSizes[] = { 36.0, 24.0, 18.0, 14.0, 12.0, 10.0, 9.0 };
+    CGFloat fontSizes[] = { 36.0, 24.0, 18.0, 14.0, 12.0, 10.0, 9.0, 8.0 };
+
+    NSString* title = self.currentTitle;
 
     int index;
     for (index=0; index<sizeof(fontSizes)/sizeof(CGFloat); ++index) {
         fontSize = fontSizes[index];
         UIFont* font = [UIFont fontWithName:@"Helvetica" size:fontSize];
-        const CGSize size = [self.currentTitle sizeOfTextWithFont:font];
+        const CGSize size = [self sizeOfString:title withFont:font];
         const double available = [self availableWidthWithTitleSize:size];
         if (size.width <= available) break;
     }
 
     return fontSize;
+}
+
+- (CGSize)sizeOfString:(NSString*)string withFont:(UIFont*)font
+{
+    /*
+     * Should just be able to do [@"foo" sizeOfTextWithFont:font], but not working in a real app.
+     * Works fine in the demo apps. I wonder if this is due to using a static library or something.
+     * It compiles fine, but then crashes saying sizeOfTextWithFont: is an unknown message.
+     */
+    CGSize textSize;
+    if ([string respondsToSelector:@selector(sizeWithAttributes:)]) {
+        // iOS 7+
+        textSize = [string sizeWithAttributes:@{NSFontAttributeName: font}];
+    }
+    else if ([string respondsToSelector:@selector(sizeWithFont:)]) {
+        // iOS 5 & 6
+        textSize = [string sizeWithFont:font];
+    }
+    else {
+        // DEBT: And? Not that we're likely to get here.
+    }
+    return textSize;
 }
 
 @end
