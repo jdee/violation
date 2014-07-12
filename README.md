@@ -55,26 +55,15 @@ demo apps is using the Xcode workspace in this directory, Violation.xcworkspace.
 Static library
 ==============
 
-By default, a framework project for iOS builds a dynamic library (a .dylib instead of a static .a).
-However, dynamic libraries are only supported in iOS 8.
-
-There are a couple of reasons you might want to use a dynamic library for a framework: If the framework
-is very common or popular, like UIKit, and has to be shared among many apps, you can reduce the size of
-each app by not building the same code into each one. Or if a framework like Foundation is a dependency
-of other frameworks and libraries, there is the risk of conflict among multiple static copies of the
-same code when linked together into an executable.
-
-Neither of these arguments applies to Violation at the moment, so in the interest of compatibility with
-versions of iOS below 8, Violation builds a static library.
+Currently, the framework is built as a static library. It should be possible instead to build a dynamic
+library, but there are issues, including possibly bugs in Xcode and almost certainly driver error. For
+now, the static library approach works in the demo apps and a separate app as well. Stay tuned for more
+info.
 
 Unfortunately, this means that Violation.framework cannot dynamically pull in its dependencies: UIKit,
 CoreGraphics and CoreText. These dynamically-linked frameworks must be explicitly included in your
 app's dependencies. UIKit and CoreGraphics are very common. You will likely have to add CoreText to
 your app project, unless you are already using it.
-
-If you are only using iOS 8 and wish to use Violation as a dynamic library, let nothing stop you from
-changing the build setting (if you know how). But this configuration is not currently supported. Don't
-be surprised if there are further problems.
 
 Other versions of Xcode
 =======================
