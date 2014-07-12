@@ -13,6 +13,8 @@ The word _violation_ is a loaded term in computing, referring to a runtime error
 observe the terms of a license. It's short and memorable, and happily it does not conflict with other
 software companies or products.
 
+See [iOS Knob Control and Violation](https://gist.github.com/jdee/f3eeadeb0eaec725edd8).
+
 Requirements
 ============
 
