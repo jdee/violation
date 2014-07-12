@@ -67,6 +67,11 @@ same code when linked together into an executable.
 Neither of these arguments applies to Violation at the moment, so in the interest of compatibility with
 versions of iOS below 8, Violation builds a static library.
 
+Unfortunately, this means that Violation.framework cannot dynamically pull in its dependencies: UIKit,
+CoreGraphics and CoreText. These dynamically-linked frameworks must be explicitly included in your
+app's dependencies. UIKit and CoreGraphics are very common. You will likely have to add CoreText to
+your app project, unless you are already using it.
+
 If you are only using iOS 8 and wish to use Violation as a dynamic library, let nothing stop you from
 changing the build setting (if you know how). But this configuration is not currently supported. Don't
 be surprised if there are further problems.

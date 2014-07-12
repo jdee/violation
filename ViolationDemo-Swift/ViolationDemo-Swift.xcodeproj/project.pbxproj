@@ -15,6 +15,9 @@
 		7B577A7719688B0F002D8327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7519688B0F002D8327 /* Main.storyboard */; };
 		7B577A7919688B0F002D8327 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7819688B0F002D8327 /* Images.xcassets */; };
 		7B577A8519688B0F002D8327 /* ViolationDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */; };
+		7BAC22441971D46800D2AEA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22411971D46800D2AEA4 /* CoreGraphics.framework */; };
+		7BAC22451971D46800D2AEA4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22421971D46800D2AEA4 /* CoreText.framework */; };
+		7BAC22461971D46800D2AEA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22431971D46800D2AEA4 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		7B577A8319688B0F002D8327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDemo_SwiftTests.swift; sourceTree = "<group>"; };
 		7B577A9419689B86002D8327 /* ViolationDemo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViolationDemo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		7BAC22411971D46800D2AEA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7BAC22421971D46800D2AEA4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7BAC22431971D46800D2AEA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BAC22441971D46800D2AEA4 /* CoreGraphics.framework in Frameworks */,
+				7BAC22451971D46800D2AEA4 /* CoreText.framework in Frameworks */,
+				7BAC22461971D46800D2AEA4 /* UIKit.framework in Frameworks */,
 				7B0E3468196D93B900FD542F /* Violation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,10 +85,10 @@
 		7B577A6119688B0F002D8327 = {
 			isa = PBXGroup;
 			children = (
-				7B0E3467196D93B900FD542F /* Violation.framework */,
 				7B577A6C19688B0F002D8327 /* ViolationDemo-Swift */,
 				7B577A8119688B0F002D8327 /* ViolationDemo-SwiftTests */,
 				7B11AFE5196A397000CCDE2B /* IOSKnobControl */,
+				7BAC22471971D46F00D2AEA4 /* Frameworks */,
 				7B577A6B19688B0F002D8327 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +139,17 @@
 				7B577A8319688B0F002D8327 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7BAC22471971D46F00D2AEA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BAC22411971D46800D2AEA4 /* CoreGraphics.framework */,
+				7BAC22421971D46800D2AEA4 /* CoreText.framework */,
+				7BAC22431971D46800D2AEA4 /* UIKit.framework */,
+				7B0E3467196D93B900FD542F /* Violation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

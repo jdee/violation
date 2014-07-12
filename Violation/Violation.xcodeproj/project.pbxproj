@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B7861C1196F2D0D00727E36 /* ViolationStringExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7861C0196F2D0D00727E36 /* ViolationStringExtensionTests.m */; };
+		7BAC22361971D37300D2AEA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22351971D37300D2AEA4 /* CoreGraphics.framework */; };
+		7BAC22381971D37800D2AEA4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22371971D37800D2AEA4 /* CoreText.framework */; };
+		7BAC223A1971D37D00D2AEA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22391971D37D00D2AEA4 /* UIKit.framework */; };
 		7BAD8C55196C69F700E8D2B1 /* Violation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C54196C69F700E8D2B1 /* Violation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C5B196C69F700E8D2B1 /* Violation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAD8C4F196C69F700E8D2B1 /* Violation.framework */; };
 		7BAD8C74196C7E6900E8D2B1 /* NSString+Violation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C6C196C7E6900E8D2B1 /* NSString+Violation.m */; };
@@ -67,6 +70,9 @@
 
 /* Begin PBXFileReference section */
 		7B7861C0196F2D0D00727E36 /* ViolationStringExtensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationStringExtensionTests.m; sourceTree = "<group>"; };
+		7BAC22351971D37300D2AEA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7BAC22371971D37800D2AEA4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7BAC22391971D37D00D2AEA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7BAD8C4F196C69F700E8D2B1 /* Violation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Violation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BAD8C53196C69F700E8D2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BAD8C54196C69F700E8D2B1 /* Violation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Violation.h; sourceTree = "<group>"; };
@@ -87,6 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BAC223A1971D37D00D2AEA4 /* UIKit.framework in Frameworks */,
+				7BAC22381971D37800D2AEA4 /* CoreText.framework in Frameworks */,
+				7BAC22361971D37300D2AEA4 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,11 +110,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BAC22341971D33C00D2AEA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BAC22391971D37D00D2AEA4 /* UIKit.framework */,
+				7BAC22371971D37800D2AEA4 /* CoreText.framework */,
+				7BAC22351971D37300D2AEA4 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7BAD8C45196C69F700E8D2B1 = {
 			isa = PBXGroup;
 			children = (
 				7BAD8C51196C69F700E8D2B1 /* Violation */,
 				7BAD8C5E196C69F700E8D2B1 /* ViolationTests */,
+				7BAC22341971D33C00D2AEA4 /* Frameworks */,
 				7BAD8C50196C69F700E8D2B1 /* Products */,
 			);
 			sourceTree = "<group>";
