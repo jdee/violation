@@ -198,7 +198,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the <em>title</em> to use for the specified <em>state</em>, which must be one of UIControlStateNormal, UIControlStateDisabled, UIControlStateHighlighted or UIControlStateSelected. Any other value of <em>state</em> is ignored. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Sets the <em>title</em> to use for the specified <em>state</em>, which must be one of UIControlStateNormal, UIControlStateDisabled, UIControlStateHighlighted or UIControlStateSelected. Any other value of <em>state</em> is ignored. The <em>title</em> parameter is copied, rather than storing a reference. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">title</td><td>the title to use for <em>state</em> </td></tr>
     <tr><td class="paramname">state</td><td>the state for which to use <em>title</em> </td></tr>
@@ -254,13 +254,13 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Title image to use for the specified <em>state</em>. Returns the title image for UIControlStateNormal if none (nil) specified for that state. Returns nil if none specified for UIControlStateNormal. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Title image to use for the specified <em>state</em>. Returns the title image for UIControlStateNormal if none (nil) specified for that state. Returns nil if none specified for UIControlStateNormal. Returns a copy of the NSString object stored for the specified state, rather than a reference. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">state</td><td>any valid value of a UIControlState variable, including combinations of states (UIControlStateDisabled|UIControlStateSelected, e.g.) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the title image to use for that <em>state</em> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the title to use for that <em>state</em> </dd></dl>
 
 </div>
 </div>
@@ -337,7 +337,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 12 2014 12:14:40 for Violation for iOS by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 12 2014 14:27:11 for Violation for iOS by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

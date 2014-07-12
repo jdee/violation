@@ -86,9 +86,10 @@
 
 /**
  * Title image to use for the specified @a state. Returns the title image for UIControlStateNormal if none (nil)
- * specified for that state. Returns nil if none specified for UIControlStateNormal.
+ * specified for that state. Returns nil if none specified for UIControlStateNormal. Returns a copy of the NSString
+ * object stored for the specified state, rather than a reference.
  * @param state any valid value of a UIControlState variable, including combinations of states (UIControlStateDisabled|UIControlStateSelected, e.g.)
- * @return the title image to use for that @a state
+ * @return the title to use for that @a state
  */
 - (NSString*) titleForState:(UIControlState)state;
 
@@ -103,7 +104,8 @@
 /**
  * Sets the @a title to use for the specified @a state, which must be one
  * of UIControlStateNormal, UIControlStateDisabled, UIControlStateHighlighted or
- * UIControlStateSelected. Any other value of @a state is ignored.
+ * UIControlStateSelected. Any other value of @a state is ignored. The @a title
+ * parameter is copied, rather than storing a reference.
  * @param title the title to use for @a state
  * @param state the state for which to use @a title
  */
