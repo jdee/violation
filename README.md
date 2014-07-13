@@ -29,12 +29,14 @@ Violation requires iOS 6.0 or higher.
 Quick demo
 ==========
 
-Open the Violation.xcworkspace file in this directory using Xcode6-Beta2, either by double-clicking
+1. Open the Violation.xcworkspace file in this directory using Xcode6-Beta2, either by double-clicking
 the file or using File > Open in Xcode. The workspace contains projects to build the framework
-and two demos. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
+and two demos.
+2. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
 or ViolationDemo-Swift; the contents of the apps are the same) and a device or simulator to run on. 
-Unlock the device if it's locked. Click the triangular run button to the left. The framework and app 
-will be built and run on the device or simulator.
+Unlock the device if it's locked.
+3. Click the triangular run button to the left. The framework and app will be built and run on the
+device or simulator.
 
 In this folder
 ==============
@@ -45,7 +47,14 @@ the same content; they are just examples of use in two different languages. The 
 the same asset catalog, Images.xcassets in this directory. Violation.xcworkspace is used to build the
 framework and both the demo apps in the right order to satisfy dependencies.
 
-The IOSKnobControl subdirectory contains an external dependency for the demo apps.
+The IOSKnobControl subdirectory contains an external dependency for the demo apps. See
+[iOS Knob Control and Violation](https://gist.github.com/jdee/f3eeadeb0eaec725edd8).
+
+The doc subdirectory contains HTML documentation generated from the public framework headers using
+Doxygen in doc/html (see doc/html/index.html).
+
+The ChangeLog contains the project's release history, not a record of individual changes (for which see
+the commit history).
 
 The project in the Violation subdirectory is a standalone framework project that can be built
 separately, using command-line tools or Xcode. Each of the demo projects depends on Violation.framework,
