@@ -87,7 +87,8 @@ Xcode5 (non-framework)
 
 You can still use Violation, but not as a framework. You can also simply add all the .h and .m files
 from the Violation/Violation subdirectory to your project. Be sure to put them in a subdirectory
-called Violation and `#import <Violation/Violation.h>`. The individual source files will be compiled
+called Violation and `#import <Violation/Violation.h>`. `@import Violation;` will not work, since
+Violation is not a framework or a module here. The individual source files will be compiled
 into your app, much like using a static library. In this case, you should be sure to
 `#define VIOLATION_NO_FRAMEWORK` when building. This suppresses some framework-related symbol
 references that can otherwise cause a link error. This method should work with any version of Xcode,
