@@ -19,8 +19,8 @@ import Violation
 
 class GestureViewController: UIViewController {
 
-    @IBOutlet var input : UIView
-    @IBOutlet var output : UIView
+    @IBOutlet var input : UIView!
+    @IBOutlet var output : UIView!
 
     var star : UIImageView!
                             

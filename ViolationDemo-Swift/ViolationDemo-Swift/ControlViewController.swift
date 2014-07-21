@@ -19,8 +19,8 @@ import Violation
 
 class ControlViewController: UIViewController {
 
-    @IBOutlet var controlHolder : UIView
-    @IBOutlet var dialHolder : UIView
+    @IBOutlet var controlHolder : UIView!
+    @IBOutlet var dialHolder : UIView!
 
     var directionWheel : ViolationDirectionWheel!
     var dialView : IOSKnobControl!

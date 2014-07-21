@@ -28,6 +28,13 @@
 			remoteGlobalIDString = 7B577A6919688B0F002D8327;
 			remoteInfo = "ViolationDemo-Swift";
 		};
+		7B7D3E86197DA83000619DEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B577A6219688B0F002D8327 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B577A6919688B0F002D8327;
+			remoteInfo = "ViolationDemo-Swift";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +191,7 @@
 			);
 			dependencies = (
 				7B577A8019688B0F002D8327 /* PBXTargetDependency */,
+				7B7D3E87197DA83000619DEA /* PBXTargetDependency */,
 			);
 			name = "ViolationDemo-SwiftTests";
 			productName = "ViolationDemo-SwiftTests";
@@ -275,6 +283,11 @@
 			target = 7B577A6919688B0F002D8327 /* ViolationDemo-Swift */;
 			targetProxy = 7B577A7F19688B0F002D8327 /* PBXContainerItemProxy */;
 		};
+		7B7D3E87197DA83000619DEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B577A6919688B0F002D8327 /* ViolationDemo-Swift */;
+			targetProxy = 7B7D3E86197DA83000619DEA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -323,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -360,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "ViolationDemo-Swift/ViolationDemo-Swift-Bridging-Header.h";

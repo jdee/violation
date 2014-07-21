@@ -20,16 +20,16 @@ Requirements
 
 Violation is an iOS framework you can build and import as an external dependency to any iOS project.
 Building iOS frameworks is new in Xcode 6. You cannot build Violation directly with Xcode 5 or lower.
-Xcode 6 is required. (*Warning:* There is a bug in Xcode6-Beta3 involving iOS frameworks and modules.
-The result is that you cannot build with the latest version of Xcode. Use Xcode6-Beta2 until the bug is
-fixed. But see below under Other versions of Xcode for a manual workaround.)
+Xcode6-Beta4 is required.
 
 Violation requires iOS 6.0 or higher.
+
+Swift requires iOS 7.0 or higher. Use the Objective-C demo on an iOS 6 device.
 
 Quick demo
 ==========
 
-1. Open the Violation.xcworkspace file in this directory using Xcode6-Beta2, either by double-clicking
+1. Open the Violation.xcworkspace file in this directory using Xcode6-Beta4, either by double-clicking
 the file or using File > Open in Xcode. The workspace contains projects to build the framework
 and two demos.
 2. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
@@ -77,9 +77,9 @@ your app project, unless you are already using it.
 Other versions of Xcode
 =======================
 
-It may be possible to use Violation with other versions of Xcode, in case you cannot use Xcode6-Beta2
+It may be possible to use Violation with other versions of Xcode, in case you cannot use Xcode6-Beta4
 for any reason. But these methods are not yet well tested and may lead to further issues that have not
-yet been discovered. Please use Xcode6-Beta2 if possible, but if you cannot for some reason, here are
+yet been discovered. Please use Xcode6-Beta4 if possible, but if you cannot for some reason, here are
 some workarounds.
 
 Xcode5 (non-framework)
@@ -93,27 +93,6 @@ into your app, much like using a static library. In this case, you should be sur
 `#define VIOLATION_NO_FRAMEWORK` when building. This suppresses some framework-related symbol
 references that can otherwise cause a link error. This method should work with any version of Xcode,
 but the framework should be preferred if you are able to build it.
-
-Xcode6-Beta3
-------------
-
-If you do not have access to Xcode6-Beta2 (perhaps you haven't been downloading every beta build as it
-comes out), it is possible to build with Xcode6-Beta3 using a manual workaround, but it is
-inconvenient. If you try to build the workspace as it is, you will encounter a complaint about a file
-called all-product-headers.yaml, which has been truncated. You must manually edit the file, which is
-located in
-~/Library/Developer/Xcode/DerivedData/Violation-cnnbnuqzuavppzbvdasiwrnsyyzs/Build/Intermediates. (The
-long string of lower-case letters after Violation- may differ in your build.) Under this, you'll find
-ViolationDemo-ObjC.build or ViolationDemo-Swift.build, depending which app you're building. The
-problem file is in that directory. In a terminal, cd to that directory and:
-
-```
-echo ']}' >> all-product-headers.yaml
-chmod a-wx !$
-```
-
-Now you should be able to build the demo apps. You will continue to see a complaint about that file,
-but the build will succeed. Hopefully this bug in Xcode6 will be fixed in the next beta release.
 
 Release builds
 ==============
