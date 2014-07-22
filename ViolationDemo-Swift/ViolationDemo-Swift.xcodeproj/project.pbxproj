@@ -35,6 +35,13 @@
 			remoteGlobalIDString = 7B577A6919688B0F002D8327;
 			remoteInfo = "ViolationDemo-Swift";
 		};
+		7B7D3E88197DA83000619DEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B577A6219688B0F002D8327 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B577A6919688B0F002D8327;
+			remoteInfo = "ViolationDemo-Swift";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +199,7 @@
 			dependencies = (
 				7B577A8019688B0F002D8327 /* PBXTargetDependency */,
 				7B7D3E87197DA83000619DEA /* PBXTargetDependency */,
+				7B7D3E89197DA83000619DEA /* PBXTargetDependency */,
 			);
 			name = "ViolationDemo-SwiftTests";
 			productName = "ViolationDemo-SwiftTests";
@@ -287,6 +295,11 @@
 			isa = PBXTargetDependency;
 			target = 7B577A6919688B0F002D8327 /* ViolationDemo-Swift */;
 			targetProxy = 7B7D3E86197DA83000619DEA /* PBXContainerItemProxy */;
+		};
+		7B7D3E89197DA83000619DEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B577A6919688B0F002D8327 /* ViolationDemo-Swift */;
+			targetProxy = 7B7D3E88197DA83000619DEA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
