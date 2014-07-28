@@ -48,7 +48,7 @@ class ControlViewController: UIViewController {
     func somethingChanged(sender: ViolationDirectionWheel) {
         // NSLog("something changed: isPressed: %@, direction: %f", sender.isPressed ? "true" : "false", sender.direction)
         dialView.hidden = !sender.isPressed
-        dialView.position = Float(sender.direction - M_PI*0.5)
+        dialView.position = Float(sender.direction)
     }
 }
 

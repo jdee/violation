@@ -47,7 +47,7 @@
 - (void)somethingChanged:(ViolationDirectionWheel*)sender
 {
     dialView.hidden = !sender.isPressed;
-    dialView.position = directionWheel.direction - 0.5*M_PI;
+    dialView.position = sender.direction;
 }
 
 @end
