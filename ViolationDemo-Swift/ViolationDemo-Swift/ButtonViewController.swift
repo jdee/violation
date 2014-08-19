@@ -29,12 +29,12 @@ class ButtonViewController: UIViewController {
     var teethKnob: IOSKnobControl!
     var rotationKnob: IOSKnobControl!
 
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupTabBarItem()
     }
 
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setupTabBarItem()
     }
