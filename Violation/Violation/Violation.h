@@ -42,4 +42,5 @@ FOUNDATION_EXPORT const unsigned char ViolationVersionString[];
 
 #import <Violation/ViolationDirectedPressGestureRecognizer.h>
 #import <Violation/ViolationDirectionWheel.h> // imports ViolationControl.h, so no need for explicit import
+#import <Violation/ViolationGearButton.h>
 

@@ -17,15 +17,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import UIKit
 import Violation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
-    var window: UIWindow?
+class ButtonViewController: UIViewController {
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        NSLog("Using Violation.framework version %f", ViolationVersionNumber) // Can't see ViolationVersionString in Swift (it's a const char[]).
-        return true
+    @IBOutlet var buttonHolder: UIView!
+    @IBOutlet var teethKnobHolder: UIView!
+    var button: ViolationGearButton!
+    var teethKnob: IOSKnobControl!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        button = ViolationGearButton(frame: buttonHolder.bounds)
+        buttonHolder.addSubview(button)
+
+        button.numTeeth = 10
+        button.lineWidth = 2
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.setTitleColor(UIColor.redColor(), forState: .Highlighted)
+
+        teethKnob = IOSKnobControl(frame: teethKnobHolder.bounds)
+        teethKnob.mode = .LinearReturn
+        teethKnob.positions = 7
+        teethKnob.titles = [ "6", "7", "8", "9", "10", "11", "12" ]
+        teethKnob.positionIndex = 4 // 10 teeth to start
+        teethKnob.addTarget(self, action: "numTeethChanged:", forControlEvents: .ValueChanged)
+        teethKnob.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        teethKnobHolder.addSubview(teethKnob)
+    }
+
+    func numTeethChanged(sender: IOSKnobControl!) {
+        let numTeeth = UInt(sender.positionIndex) + 6
+        button.numTeeth = numTeeth
+        button.setNeedsDisplay()
     }
 
 }
-

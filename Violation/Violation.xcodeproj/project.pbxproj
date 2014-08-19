@@ -21,6 +21,8 @@
 		7BAD8C9A196C85B300E8D2B1 /* ViolationControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6D196C7E6900E8D2B1 /* ViolationControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C9B196C85B300E8D2B1 /* ViolationDirectedPressGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6F196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C9C196C85B300E8D2B1 /* ViolationDirectionWheel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C71196C7E6900E8D2B1 /* ViolationDirectionWheel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BE8FD2A19A38122006CB8EA /* ViolationGearButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BE8FD2819A38122006CB8EA /* ViolationGearButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BE8FD2B19A38122006CB8EA /* ViolationGearButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8FD2919A38122006CB8EA /* ViolationGearButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		7BAD8C70196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectedPressGestureRecognizer.m; sourceTree = "<group>"; };
 		7BAD8C71196C7E6900E8D2B1 /* ViolationDirectionWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationDirectionWheel.h; sourceTree = "<group>"; };
 		7BAD8C72196C7E6900E8D2B1 /* ViolationDirectionWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationDirectionWheel.m; sourceTree = "<group>"; };
+		7BE8FD2819A38122006CB8EA /* ViolationGearButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationGearButton.h; sourceTree = "<group>"; };
+		7BE8FD2919A38122006CB8EA /* ViolationGearButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationGearButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,8 @@
 				7BAD8C70196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m */,
 				7BAD8C71196C7E6900E8D2B1 /* ViolationDirectionWheel.h */,
 				7BAD8C72196C7E6900E8D2B1 /* ViolationDirectionWheel.m */,
+				7BE8FD2819A38122006CB8EA /* ViolationGearButton.h */,
+				7BE8FD2919A38122006CB8EA /* ViolationGearButton.m */,
 				7BAD8C52196C69F700E8D2B1 /* Supporting Files */,
 			);
 			path = Violation;
@@ -189,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BAD8C9A196C85B300E8D2B1 /* ViolationControl.h in Headers */,
+				7BE8FD2A19A38122006CB8EA /* ViolationGearButton.h in Headers */,
 				7BAD8C9B196C85B300E8D2B1 /* ViolationDirectedPressGestureRecognizer.h in Headers */,
 				7BAD8C9C196C85B300E8D2B1 /* ViolationDirectionWheel.h in Headers */,
 				7BAD8C55196C69F700E8D2B1 /* Violation.h in Headers */,
@@ -302,6 +309,7 @@
 				7BAD8C78196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m in Sources */,
 				7BAD8C74196C7E6900E8D2B1 /* NSString+Violation.m in Sources */,
 				7BAD8C76196C7E6900E8D2B1 /* ViolationControl.m in Sources */,
+				7BE8FD2B19A38122006CB8EA /* ViolationGearButton.m in Sources */,
 				7BAD8C7A196C7E6900E8D2B1 /* ViolationDirectionWheel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

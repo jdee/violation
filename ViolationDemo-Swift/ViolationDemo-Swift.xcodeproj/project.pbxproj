@@ -12,12 +12,13 @@
 		7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A6F19688B0F002D8327 /* AppDelegate.swift */; };
 		7B577A7219688B0F002D8327 /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A7119688B0F002D8327 /* GestureViewController.swift */; };
 		7B577A7419688B0F002D8327 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A7319688B0F002D8327 /* ControlViewController.swift */; };
-		7B577A7719688B0F002D8327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7519688B0F002D8327 /* Main.storyboard */; };
 		7B577A7919688B0F002D8327 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B577A7819688B0F002D8327 /* Images.xcassets */; };
 		7B577A8519688B0F002D8327 /* ViolationDemo_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B577A8419688B0F002D8327 /* ViolationDemo_SwiftTests.swift */; };
 		7BAC22441971D46800D2AEA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22411971D46800D2AEA4 /* CoreGraphics.framework */; };
 		7BAC22451971D46800D2AEA4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22421971D46800D2AEA4 /* CoreText.framework */; };
 		7BAC22461971D46800D2AEA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC22431971D46800D2AEA4 /* UIKit.framework */; };
+		7BE8FD3119A38382006CB8EA /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8FD3019A38382006CB8EA /* ButtonViewController.swift */; };
+		7BE8FD3419A384B9006CB8EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BE8FD3219A384B9006CB8EA /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,6 @@
 		7B577A6F19688B0F002D8327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B577A7119688B0F002D8327 /* GestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureViewController.swift; sourceTree = "<group>"; };
 		7B577A7319688B0F002D8327 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
-		7B577A7619688B0F002D8327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B577A7819688B0F002D8327 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../Images.xcassets; sourceTree = "<group>"; };
 		7B577A7E19688B0F002D8327 /* ViolationDemo-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ViolationDemo-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B577A8319688B0F002D8327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +62,8 @@
 		7BAC22411971D46800D2AEA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7BAC22421971D46800D2AEA4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7BAC22431971D46800D2AEA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7BE8FD3019A38382006CB8EA /* ButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
+		7BE8FD3319A384B9006CB8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				7B577A6F19688B0F002D8327 /* AppDelegate.swift */,
-				7B577A7119688B0F002D8327 /* GestureViewController.swift */,
+				7BE8FD3019A38382006CB8EA /* ButtonViewController.swift */,
 				7B577A7319688B0F002D8327 /* ControlViewController.swift */,
-				7B577A7519688B0F002D8327 /* Main.storyboard */,
+				7B577A7119688B0F002D8327 /* GestureViewController.swift */,
+				7BE8FD3219A384B9006CB8EA /* Main.storyboard */,
 				7B577A7819688B0F002D8327 /* Images.xcassets */,
 				7B577A6D19688B0F002D8327 /* Supporting Files */,
 			);
@@ -249,8 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B577A7719688B0F002D8327 /* Main.storyboard in Resources */,
 				7B577A7919688B0F002D8327 /* Images.xcassets in Resources */,
+				7BE8FD3419A384B9006CB8EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +274,7 @@
 				7B577A7419688B0F002D8327 /* ControlViewController.swift in Sources */,
 				7B577A7019688B0F002D8327 /* AppDelegate.swift in Sources */,
 				7B577A7219688B0F002D8327 /* GestureViewController.swift in Sources */,
+				7BE8FD3119A38382006CB8EA /* ButtonViewController.swift in Sources */,
 				7B11AFE4196A396A00CCDE2B /* IOSKnobControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,10 +308,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7B577A7519688B0F002D8327 /* Main.storyboard */ = {
+		7BE8FD3219A384B9006CB8EA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7B577A7619688B0F002D8327 /* Base */,
+				7BE8FD3319A384B9006CB8EA /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
