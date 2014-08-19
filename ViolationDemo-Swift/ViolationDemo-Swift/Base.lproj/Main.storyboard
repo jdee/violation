@@ -160,34 +160,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFr-pw-TAT">
-                                <rect key="frame" x="60" y="20" width="200" height="200"/>
+                                <rect key="frame" x="100" y="20" width="120" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="YbJ-h4-WCu"/>
-                                    <constraint firstAttribute="width" constant="200" id="bdH-ZC-4qC"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-KQ-set">
-                                <rect key="frame" x="20" y="228" width="85" height="85"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="Hr2-a8-GPu"/>
-                                    <constraint firstAttribute="width" constant="85" id="dDB-EC-cuF"/>
+                                    <constraint firstAttribute="height" constant="120" id="YbJ-h4-WCu"/>
+                                    <constraint firstAttribute="width" constant="120" id="bdH-ZC-4qC"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwM-MN-m32">
                                 <rect key="frame" x="0.0" y="387" width="320" height="44"/>
                                 <items/>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-KQ-set">
+                                <rect key="frame" x="20" y="148" width="85" height="85"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="Hr2-a8-GPu"/>
+                                    <constraint firstAttribute="width" constant="85" id="dDB-EC-cuF"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aq-pO-IkM">
+                                <rect key="frame" x="113" y="148" width="85" height="85"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Kn8-JF-0fv"/>
+                                    <constraint firstAttribute="height" constant="85" id="u7v-vb-B0o"/>
+                                </constraints>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.0" maxValue="0.16" translatesAutoresizingMaskIntoConstraints="NO" id="Pub-Tg-GmP">
+                                <rect key="frame" x="18" y="241" width="140" height="31"/>
+                                <connections>
+                                    <action selector="innerRingRatioChanged:" destination="TCT-Cf-KBZ" eventType="valueChanged" id="Kpu-QP-iw6"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.17999999999999999" maxValue="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="xN6-iA-4Lb">
+                                <rect key="frame" x="171" y="241" width="140" height="31"/>
+                                <connections>
+                                    <action selector="innerToothRatioChanged:" destination="TCT-Cf-KBZ" eventType="valueChanged" id="5AR-O5-sK8"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mwM-MN-m32" secondAttribute="bottom" id="8Wx-m9-TrG"/>
-                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" constant="60" id="DAf-hT-FXY"/>
+                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" constant="100" id="DAf-hT-FXY"/>
+                            <constraint firstItem="0aq-pO-IkM" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="8" id="Ftf-vu-5Ak"/>
                             <constraint firstItem="mwM-MN-m32" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" id="I4M-pF-oAq"/>
                             <constraint firstItem="gYC-KQ-set" firstAttribute="top" secondItem="gFr-pw-TAT" secondAttribute="bottom" constant="8" id="SLB-tt-UMO"/>
                             <constraint firstItem="gFr-pw-TAT" firstAttribute="top" secondItem="75X-zH-XOL" secondAttribute="top" constant="20" id="tai-YM-5xH"/>
-                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="-45" id="vwb-06-w2M"/>
+                            <constraint firstItem="gYC-KQ-set" firstAttribute="top" secondItem="0aq-pO-IkM" secondAttribute="bottom" constant="-85" id="u69-oG-7AL"/>
+                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="-5" id="vwb-06-w2M"/>
                             <constraint firstAttribute="trailing" secondItem="mwM-MN-m32" secondAttribute="trailing" id="wsT-xu-kuR"/>
                         </constraints>
                     </view>
@@ -196,6 +218,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="buttonHolder" destination="gFr-pw-TAT" id="t3i-B8-ioF"/>
+                        <outlet property="innerRingSlider" destination="Pub-Tg-GmP" id="8hx-DG-VX1"/>
+                        <outlet property="innerToothSlider" destination="xN6-iA-4Lb" id="wHv-TY-Oar"/>
+                        <outlet property="rotationKnobHolder" destination="0aq-pO-IkM" id="2Es-wI-udT"/>
                         <outlet property="teethKnobHolder" destination="gYC-KQ-set" id="bm8-c2-9dF"/>
                         <outlet property="toolbar" destination="mwM-MN-m32" id="Jp1-T4-T5E"/>
                     </connections>

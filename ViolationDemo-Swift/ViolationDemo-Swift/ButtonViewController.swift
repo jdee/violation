@@ -21,9 +21,13 @@ class ButtonViewController: UIViewController {
 
     @IBOutlet var buttonHolder: UIView!
     @IBOutlet var teethKnobHolder: UIView!
+    @IBOutlet var rotationKnobHolder: UIView!
+    @IBOutlet var innerRingSlider: UISlider!
+    @IBOutlet var innerToothSlider: UISlider!
     @IBOutlet var toolbar: UIToolbar!
     var button: ViolationGearButton!
     var teethKnob: IOSKnobControl!
+    var rotationKnob: IOSKnobControl!
 
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -60,6 +64,15 @@ class ButtonViewController: UIViewController {
         teethKnob.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         teethKnobHolder.addSubview(teethKnob)
 
+        rotationKnob = IOSKnobControl(frame: rotationKnobHolder.bounds)
+        rotationKnob.mode = .Continuous
+        rotationKnob.circular = true
+        rotationKnob.normalized = true
+        rotationKnob.clockwise = false
+        rotationKnob.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        rotationKnob.addTarget(self, action: "rotationChanged:", forControlEvents: .ValueChanged)
+        rotationKnobHolder.addSubview(rotationKnob)
+
         let barButtonItem = ViolationGearBarButtonItem(target:self, action:"toolbarButtonPressed:")
         barButtonItem.button.numTeeth = 8
         barButtonItem.button.lineWidth = 1
@@ -72,7 +85,20 @@ class ButtonViewController: UIViewController {
     func numTeethChanged(sender: IOSKnobControl!) {
         let numTeeth = UInt(sender.positionIndex) + 6
         button.numTeeth = numTeeth
-        button.setNeedsDisplay()
+    }
+
+    func rotationChanged(sender: IOSKnobControl!) {
+        button.rotation = CGFloat(sender.position)
+    }
+
+    @IBAction
+    func innerRingRatioChanged(sender: UISlider!) {
+        button.innerRingRatio = CGFloat(sender.value)
+    }
+
+    @IBAction
+    func innerToothRatioChanged(sender: UISlider!) {
+        button.innerToothRatio = CGFloat(sender.value)
     }
 
     func toolbarButtonPressed(sender: ViolationGearBarButtonItem!) {
@@ -82,6 +108,7 @@ class ButtonViewController: UIViewController {
         let dummy = ViolationGearButton(frame: CGRectMake(0, 0, 44, 44))
         dummy.numTeeth = 10
         dummy.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        dummy.innerRingRatio = 0
 
         tabBarItem = UITabBarItem(title: "Button", image: dummy.image, tag: 2)
     }

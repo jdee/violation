@@ -112,13 +112,13 @@
 
     const CGFloat deltaTheta = 2.0 * M_PI / (CGFloat)_numTeeth;
 
-    CGFloat theta = -0.125 * deltaTheta + _rotation;
+    CGFloat theta = -0.125 * deltaTheta - _rotation;
     CGFloat radius = _outerToothRatio * dimension;
 
     CGContextMoveToPoint(context, 0.5*width + cos(theta)*radius, 0.5*height + sin(theta)*radius);
 
     for (int j=0; j<_numTeeth; ++j) {
-        theta = ((CGFloat)j - 0.125) * deltaTheta + _rotation;
+        theta = ((CGFloat)j - 0.125) * deltaTheta - _rotation;
         radius = _outerToothRatio * dimension;
 
         CGContextAddArc(context, 0.5 * width, 0.5 * height, radius, theta, theta + 0.25 * deltaTheta, NO);
