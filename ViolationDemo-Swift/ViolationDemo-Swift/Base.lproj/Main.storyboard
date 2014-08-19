@@ -160,11 +160,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFr-pw-TAT">
-                                <rect key="frame" x="100" y="20" width="120" height="120"/>
+                                <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="YbJ-h4-WCu"/>
-                                    <constraint firstAttribute="width" constant="120" id="bdH-ZC-4qC"/>
+                                    <constraint firstAttribute="width" constant="280" id="bdH-ZC-4qC"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwM-MN-m32">
@@ -187,13 +187,13 @@
                                     <constraint firstAttribute="height" constant="85" id="u7v-vb-B0o"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.0" maxValue="0.16" translatesAutoresizingMaskIntoConstraints="NO" id="Pub-Tg-GmP">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.0" maxValue="0.16" translatesAutoresizingMaskIntoConstraints="NO" id="Pub-Tg-GmP">
                                 <rect key="frame" x="18" y="241" width="140" height="31"/>
                                 <connections>
                                     <action selector="innerRingRatioChanged:" destination="TCT-Cf-KBZ" eventType="valueChanged" id="Kpu-QP-iw6"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.17999999999999999" maxValue="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="xN6-iA-4Lb">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.17999999999999999" maxValue="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="xN6-iA-4Lb">
                                 <rect key="frame" x="171" y="241" width="140" height="31"/>
                                 <connections>
                                     <action selector="innerToothRatioChanged:" destination="TCT-Cf-KBZ" eventType="valueChanged" id="5AR-O5-sK8"/>
@@ -202,14 +202,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xN6-iA-4Lb" secondAttribute="trailing" constant="11" id="1XW-Mr-aBc"/>
+                            <constraint firstItem="Pub-Tg-GmP" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" constant="20" id="8MM-Ck-gee"/>
                             <constraint firstAttribute="bottom" secondItem="mwM-MN-m32" secondAttribute="bottom" id="8Wx-m9-TrG"/>
-                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" constant="100" id="DAf-hT-FXY"/>
+                            <constraint firstItem="Pub-Tg-GmP" firstAttribute="top" secondItem="xN6-iA-4Lb" secondAttribute="bottom" constant="-30" id="99v-DP-YlX"/>
+                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" constant="20" id="DAf-hT-FXY"/>
+                            <constraint firstItem="Pub-Tg-GmP" firstAttribute="top" secondItem="gYC-KQ-set" secondAttribute="bottom" constant="8" id="FOA-1E-4Wz"/>
                             <constraint firstItem="0aq-pO-IkM" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="8" id="Ftf-vu-5Ak"/>
                             <constraint firstItem="mwM-MN-m32" firstAttribute="leading" secondItem="75X-zH-XOL" secondAttribute="leading" id="I4M-pF-oAq"/>
                             <constraint firstItem="gYC-KQ-set" firstAttribute="top" secondItem="gFr-pw-TAT" secondAttribute="bottom" constant="8" id="SLB-tt-UMO"/>
+                            <constraint firstItem="Pub-Tg-GmP" firstAttribute="width" secondItem="xN6-iA-4Lb" secondAttribute="width" id="UCP-ng-l8I"/>
+                            <constraint firstItem="xN6-iA-4Lb" firstAttribute="leading" secondItem="Pub-Tg-GmP" secondAttribute="trailing" constant="17" id="eqh-94-egG"/>
                             <constraint firstItem="gFr-pw-TAT" firstAttribute="top" secondItem="75X-zH-XOL" secondAttribute="top" constant="20" id="tai-YM-5xH"/>
                             <constraint firstItem="gYC-KQ-set" firstAttribute="top" secondItem="0aq-pO-IkM" secondAttribute="bottom" constant="-85" id="u69-oG-7AL"/>
-                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="-5" id="vwb-06-w2M"/>
+                            <constraint firstItem="gFr-pw-TAT" firstAttribute="leading" secondItem="gYC-KQ-set" secondAttribute="trailing" constant="-85" id="vwb-06-w2M"/>
                             <constraint firstAttribute="trailing" secondItem="mwM-MN-m32" secondAttribute="trailing" id="wsT-xu-kuR"/>
                         </constraints>
                     </view>
