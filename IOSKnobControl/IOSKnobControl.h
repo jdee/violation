@@ -4,8 +4,8 @@
 #error IOSKnobControl requires automatic reference counting.
 #endif // objc_arc
 
-#define IKC_VERSION_STRING @"1.2.1"
-#define IKC_VERSION 0x010201
+#define IKC_VERSION_STRING @"1.3.0"
+#define IKC_VERSION 0x010300
 #define IKC_BUILD 1
 
 /**
@@ -42,16 +42,6 @@ typedef NS_ENUM(NSInteger, IKCMode) {
     IKCModeRotaryDial      ///< Like an old rotary telephone dial.
 };
 
-/*
- * For brevity, the individual enumerated values were previously named IKCMLinearReturn, etc. But the longer names provide for better interoperability with Swift.
- * By changing the enumeration names, these become IKCMode.LinearReturn, IKCMode.Continuous, etc. These macros are provided for compatibility with the previous versions.
- * DEBT: Should I use something other than macros? It may be advantageous to mark these deprecated some day, and I'm not sure if that can be done with macros.
- */
-#define IKCMLinearReturn IKCModeLinearReturn
-#define IKCMWheelOfFortune IKCModeWheelOfFortune
-#define IKCMContinuous IKCModeContinuous
-#define IKCMRotaryDial IKCModeRotaryDial
-
 typedef NS_ENUM(NSInteger, IKCGesture) {
     IKCGestureOneFingerRotation, ///< Custom gesture handling. One finger rotates the knob.
     IKCGestureTwoFingerRotation, ///< Uses the standard iOS two-finger rotation gesture. (Not available with IKCModeRotaryDial.)
@@ -59,10 +49,25 @@ typedef NS_ENUM(NSInteger, IKCGesture) {
     IKCGestureTap                ///< Uses a tap gesture. The knob rotates to the position tapped. In rotary dial mode, rotates from the position tapped (dials that number).
 };
 
-#define IKCGOneFingerRotation IKCGestureOneFingerRotation
-#define IKCGTwoFingerRotation IKCGestureTwoFingerRotation
-#define IKCGVerticalPan IKCGestureVerticalPan
-#define IKCGTap IKCGestureTap
+#ifndef IKC_DISABLE_DEPRECATED
+/*
+ * For brevity, the individual enumerated values were previously named IKCMLinearReturn, etc. But the longer names provide for better interoperability with Swift.
+ * By changing the enumeration names, these become IKCMode.LinearReturn, IKCMode.Continuous, etc., which can be used without the type qualification. These static constants
+ * are provided for compatibility with the previous versions. If the static constants cause any linking problems, please use the new enumerations instead and
+ * #define IKC_DISABLE_DEPRECATED. It's unlikely that this would happen in any circumstance, but it's most likely if you are compiling the control into a library.
+ * If you simply drop the .h and .m into your app, there will be no issues.
+ */
+
+static const NSInteger IKCMLinearReturn DEPRECATED_MSG_ATTRIBUTE("Use IKCModeLinearReturn instead") = IKCModeLinearReturn;
+static const NSInteger IKCMWheelOfFortune DEPRECATED_MSG_ATTRIBUTE("Use IKCModeWheelOfFortune instead") = IKCModeWheelOfFortune;
+static const NSInteger IKCMContinuous DEPRECATED_MSG_ATTRIBUTE("Use IKCModeContinuous instead") = IKCModeContinuous;
+static const NSInteger IKCMRotaryDial DEPRECATED_MSG_ATTRIBUTE("Use IKCModeRotaryDial instead") = IKCModeRotaryDial;
+
+static const NSInteger IKCGOneFingerRotation DEPRECATED_MSG_ATTRIBUTE("Use IKCGestureOneFingerRotation instead") = IKCGestureOneFingerRotation;
+static const NSInteger IKCGTwoFingerRotation DEPRECATED_MSG_ATTRIBUTE("Use IKCGestureTwoFingerRotation instead") = IKCGestureTwoFingerRotation;
+static const NSInteger IKCGVerticalPan DEPRECATED_MSG_ATTRIBUTE("Use IKCGestureVerticalPan instead") = IKCGestureVerticalPan;
+static const NSInteger IKCGTap DEPRECATED_MSG_ATTRIBUTE("Use IKCGestureTap instead") = IKCGestureTap;
+#endif // IKC_DISABLE_DEPRECATED
 
 /**
  * A simple, reusable rotary control. You may provide custom knob images or use the default images, which may be customized
@@ -123,6 +128,12 @@ typedef NS_ENUM(NSInteger, IKCGesture) {
  * The title color to use for the current state.
  */
 @property (nonatomic, readonly) UIColor* currentTitleColor;
+
+/**
+ * The font name to use when rendering text in the discrete modes, including rotary dial. Default is Helvetica. The font size is determined by the knob size and the number of positions.
+ * CoreText interprets the font name and prefers PostScript names.
+ */
+@property (nonatomic) NSString* fontName;
 
 /**
  * An image to render in the foreground. Like the background image, this is totally stationary. The knob image is sandwiched between them and is the only thing
@@ -188,6 +199,11 @@ typedef NS_ENUM(NSInteger, IKCGesture) {
 @property (nonatomic) NSUInteger positions;
 
 /**
+ * Determine whether to draw a shadow behind the knob. Default is NO.
+ */
+@property (nonatomic) BOOL shadow;
+
+/**
  * Used to specify the time scale for return animations.
  * Default is 1.0. The duration of the animation is proportional to this property.
  * Set the number below 1.0 to speed up the animation, and above to slow it down.
@@ -199,8 +215,27 @@ typedef NS_ENUM(NSInteger, IKCGesture) {
 /**
  * Only used when no image is provided in a discrete mode. These titles are rendered around the knob for each position index. If this property is nil (the default), the position
  * indices will be rendered instead (0, 1, 2, ...). If the length of titles is less than positions, remaining titles will be supplied by indices.
+ *
+ * Entries may be NSStrings, NSAttributedStrings, or a mix. If an NSAttributedString does not specify the NSFontAttributeName or the NSForegroundColorAttributeName, the
+ * attribute will be supplied as for NSStrings (from the currentTitleColor and fontName properties, and the font size will be determined to fit the knob or by zooming the top
+ * title). If an attributed string specifies a font, and the zoomTopTitle property is set to YES, the attributed string's font size will be increased. Otherwise, the
+ * attributed string's specified attributes will be used. Except for zooming the top title, specified font sizes of attributed strings are never adjusted to fit the knob
+ * like plain string titles.
  */
 @property (nonatomic) NSArray* titles;
+
+/**
+ * Only applicable if zoomTopTitle is set in IKCModeLinearReturn or IKCModeWheelOfFortune with no image. Specifies the point size to which the top title should be enlarged.
+ * If set to 0, on iOS 7+ the Dynamic Type headline size (i.e., [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline].pointSize) will be used; on
+ * iOS 5 or 6 a 17 pt font will be used. Otherwise, the specified point size will be used. The default is 0.
+ */
+@property (nonatomic) CGFloat zoomPointSize;
+
+/**
+ * Only applicable in IKCModeLinearReturn and IKCModeWheelOfFortune when no image is present, and the knob image is generated from the titles property. If set to YES, the
+ * control will enlarge the top title up to a certain size (see zoomPointSize above). The default value is YES.
+ */
+@property (nonatomic) BOOL zoomTopTitle;
 
 #pragma mark - Object Lifecycle
 
