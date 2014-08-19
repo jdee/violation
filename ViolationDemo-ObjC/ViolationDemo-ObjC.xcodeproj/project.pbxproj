@@ -20,6 +20,7 @@
 		7BAC223E1971D45900D2AEA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC223B1971D45900D2AEA4 /* CoreGraphics.framework */; };
 		7BAC223F1971D45900D2AEA4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC223C1971D45900D2AEA4 /* CoreText.framework */; };
 		7BAC22401971D45900D2AEA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC223D1971D45900D2AEA4 /* UIKit.framework */; };
+		7BE8FD3B19A3C900006CB8EA /* ViolationButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE8FD3A19A3C900006CB8EA /* ViolationButtonViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		7BAC223B1971D45900D2AEA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7BAC223C1971D45900D2AEA4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7BAC223D1971D45900D2AEA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7BE8FD3919A3C900006CB8EA /* ViolationButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViolationButtonViewController.h; sourceTree = "<group>"; };
+		7BE8FD3A19A3C900006CB8EA /* ViolationButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViolationButtonViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 			children = (
 				7B5F1CC61968A96B002F512E /* ViolationAppDelegate.h */,
 				7B5F1CC71968A96B002F512E /* ViolationAppDelegate.m */,
+				7BE8FD3919A3C900006CB8EA /* ViolationButtonViewController.h */,
+				7BE8FD3A19A3C900006CB8EA /* ViolationButtonViewController.m */,
 				7B5F1CC91968A96B002F512E /* ViolationGestureViewController.h */,
 				7B5F1CCA1968A96B002F512E /* ViolationGestureViewController.m */,
 				7B5F1CCC1968A96B002F512E /* ViolationControlViewController.h */,
@@ -266,6 +271,7 @@
 				7B11AFE9196A3C9800CCDE2B /* IOSKnobControl.m in Sources */,
 				7B5F1CC81968A96B002F512E /* ViolationAppDelegate.m in Sources */,
 				7B5F1CCB1968A96B002F512E /* ViolationGestureViewController.m in Sources */,
+				7BE8FD3B19A3C900006CB8EA /* ViolationButtonViewController.m in Sources */,
 				7B5F1CC51968A96B002F512E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
