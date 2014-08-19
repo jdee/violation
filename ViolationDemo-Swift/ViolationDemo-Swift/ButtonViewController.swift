@@ -21,11 +21,27 @@ class ButtonViewController: UIViewController {
 
     @IBOutlet var buttonHolder: UIView!
     @IBOutlet var teethKnobHolder: UIView!
+    @IBOutlet var toolbar: UIToolbar!
     var button: ViolationGearButton!
     var teethKnob: IOSKnobControl!
 
+    init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+        setupTabBarItem()
+    }
+
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setupTabBarItem()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController.tabBar.translucent = false
+
+        assert(tabBarItem.tag == 2)
+        assert(tabBarController.viewControllers.count == 3)
+        assert(tabBarController.viewControllers[2] === self)
 
         button = ViolationGearButton(frame: buttonHolder.bounds)
         buttonHolder.addSubview(button)
@@ -43,12 +59,31 @@ class ButtonViewController: UIViewController {
         teethKnob.addTarget(self, action: "numTeethChanged:", forControlEvents: .ValueChanged)
         teethKnob.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         teethKnobHolder.addSubview(teethKnob)
+
+        let barButtonItem = ViolationGearBarButtonItem(target:self, action:"toolbarButtonPressed:")
+        barButtonItem.button.numTeeth = 8
+        barButtonItem.button.lineWidth = 1
+        barButtonItem.button.rotation = CGFloat(M_PI/8)
+        barButtonItem.button.setTitleColor(UIColor.brownColor(), forState: .Normal)
+        barButtonItem.button.setTitleColor(UIColor.greenColor(), forState: .Highlighted)
+        toolbar.items = [ barButtonItem ]
     }
 
     func numTeethChanged(sender: IOSKnobControl!) {
         let numTeeth = UInt(sender.positionIndex) + 6
         button.numTeeth = numTeeth
         button.setNeedsDisplay()
+    }
+
+    func toolbarButtonPressed(sender: ViolationGearBarButtonItem!) {
+    }
+
+    private func setupTabBarItem() {
+        let dummy = ViolationGearButton(frame: CGRectMake(0, 0, 44, 44))
+        dummy.numTeeth = 10
+        dummy.setTitleColor(UIColor.blackColor(), forState: .Normal)
+
+        tabBarItem = UITabBarItem(title: "Button", image: dummy.image, tag: 2)
     }
 
 }

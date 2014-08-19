@@ -22,5 +22,8 @@
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic) CGFloat rotation;
 @property (nonatomic) CGFloat innerToothRatio, outerToothRatio, innerRingRatio;
+@property (nonatomic, readonly) UIImage* image;
+
+- (void)drawGearPath:(CGContextRef)context;
 
 @end

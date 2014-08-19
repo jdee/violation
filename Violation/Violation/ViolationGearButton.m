@@ -28,6 +28,9 @@
         _innerToothRatio = 0.25;
         _outerToothRatio = 0.3;
         _lineWidth = 1.0;
+
+        self.opaque = NO;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -50,24 +53,54 @@
     [self setNeedsDisplay];
 }
 
+- (void)setNumTeeth:(NSUInteger)numTeeth
+{
+    _numTeeth = numTeeth;
+    [self setNeedsDisplay];
+}
+
+- (void)setRotation:(CGFloat)rotation
+{
+    _rotation = rotation;
+    [self setNeedsDisplay];
+}
+
+- (void)setInnerRingRatio:(CGFloat)innerRingRatio
+{
+    _innerRingRatio = innerRingRatio;
+    [self setNeedsDisplay];
+}
+
+- (void)setInnerToothRatio:(CGFloat)innerToothRatio
+{
+    _innerToothRatio = innerToothRatio;
+    [self setNeedsDisplay];
+}
+
+- (void)setOuterToothRatio:(CGFloat)outerToothRatio
+{
+    _outerToothRatio = outerToothRatio;
+    [self setNeedsDisplay];
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth
+{
+    _lineWidth = lineWidth;
+    [self setNeedsDisplay];
+}
+
+- (UIImage *)image
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self drawGearPath:UIGraphicsGetCurrentContext()];
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 - (void)drawRect:(CGRect)rect
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-
-    [self drawGearPath:context];
-
-    CGContextSetLineWidth(context, _lineWidth);
-    CGContextSetLineJoin(context, kCGLineJoinMiter);
-    CGContextSetStrokeColorWithColor(context, self.currentTitleColor.CGColor);
-    CGContextSetShouldAntialias(context, true);
-    CGContextStrokePath(context);
-
-    if (_innerRingRatio <= 0.0) return;
-
-    const CGFloat width = self.bounds.size.width;
-    const CGFloat height = self.bounds.size.height;
-    CGContextAddArc(context, 0.5*width, 0.5*height, _innerRingRatio*MIN(width, height), 0, 2.0*M_PI, NO);
-    CGContextStrokePath(context);
+    [self drawGearPath:UIGraphicsGetCurrentContext()];
 }
 
 - (void)drawGearPath:(CGContextRef)context
@@ -103,6 +136,17 @@
     }
 
     CGContextAddArc(context, 0.5 * width, 0.5 * height, radius, theta, theta + 0.25 * deltaTheta, NO);
+
+    CGContextSetLineWidth(context, _lineWidth);
+    CGContextSetLineJoin(context, kCGLineJoinMiter);
+    CGContextSetStrokeColorWithColor(context, self.currentTitleColor.CGColor);
+    CGContextSetShouldAntialias(context, true);
+    CGContextStrokePath(context);
+
+    if (_innerRingRatio <= 0.0) return;
+
+    CGContextAddArc(context, 0.5*width, 0.5*height, _innerRingRatio*MIN(width, height), 0, 2.0*M_PI, NO);
+    CGContextStrokePath(context);
 }
 
 @end
