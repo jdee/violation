@@ -140,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="120" id="mnU-8z-lTc"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXe-ef-mKC">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXe-ef-mKC">
                                 <rect key="frame" x="20" y="177" width="85" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -148,7 +148,7 @@
                                     <constraint firstAttribute="height" constant="85" id="UEL-x6-bmR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-Li-AmD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-Li-AmD">
                                 <rect key="frame" x="113" y="177" width="85" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -156,37 +156,49 @@
                                 <rect key="frame" x="0.0" y="387" width="320" height="44"/>
                                 <items/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="teeth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKQ-bZ-hg3">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="teeth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKQ-bZ-hg3">
                                 <rect key="frame" x="20" y="148" width="85" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="II9-cu-hcD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rotation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRQ-lG-88n">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rotation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRQ-lG-88n">
                                 <rect key="frame" x="113" y="148" width="85" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Y5E-7T-a0L"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="inner ring ratio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHP-bH-X5t">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inner ring ratio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHP-bH-X5t">
                                 <rect key="frame" x="20" y="270" width="140" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zFW-Ag-kjF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="inner tooth ratio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnT-8C-48h">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inner tooth ratio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnT-8C-48h">
                                 <rect key="frame" x="160" y="270" width="140" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zqI-mh-uuh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.0" maxValue="0.16" translatesAutoresizingMaskIntoConstraints="NO" id="iiO-pl-TrN">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.0" maxValue="0.16" translatesAutoresizingMaskIntoConstraints="NO" id="iiO-pl-TrN">
                                 <rect key="frame" x="18" y="305" width="140" height="31"/>
                                 <connections>
                                     <action selector="innerRingRatioChanged:" destination="Bjx-Lk-7Sm" eventType="valueChanged" id="hzY-Qe-LeM"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.17999999999999999" maxValue="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="uXV-St-zQE">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.17999999999999999" maxValue="0.28000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="uXV-St-zQE">
                                 <rect key="frame" x="162" y="305" width="140" height="31"/>
                                 <connections>
                                     <action selector="innerToothRatioChanged:" destination="Bjx-Lk-7Sm" eventType="valueChanged" id="miF-ol-05M"/>
@@ -198,7 +210,6 @@
                             <constraint firstItem="aXe-ef-mKC" firstAttribute="width" secondItem="LKQ-bZ-hg3" secondAttribute="width" id="1PN-ee-vSL"/>
                             <constraint firstItem="tRQ-lG-88n" firstAttribute="leading" secondItem="fOa-Li-AmD" secondAttribute="trailing" constant="-85" id="3gf-1g-UTP"/>
                             <constraint firstItem="qvK-c1-wJy" firstAttribute="top" secondItem="PP5-h1-fNA" secondAttribute="top" constant="20" id="ArU-x9-AWH"/>
-                            <constraint firstItem="IHP-bH-X5t" firstAttribute="height" secondItem="OnT-8C-48h" secondAttribute="height" id="C8d-Eo-R2V"/>
                             <constraint firstAttribute="trailing" secondItem="oab-Ip-HJ9" secondAttribute="trailing" id="DNT-Yd-Qgx"/>
                             <constraint firstItem="IHP-bH-X5t" firstAttribute="top" secondItem="aXe-ef-mKC" secondAttribute="bottom" constant="8" id="ENX-f0-Ip2"/>
                             <constraint firstItem="uXV-St-zQE" firstAttribute="height" secondItem="iiO-pl-TrN" secondAttribute="height" id="HEt-Qb-Bfy"/>
