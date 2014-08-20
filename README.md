@@ -20,7 +20,7 @@ Requirements
 
 Violation is an iOS framework you can build and import as an external dependency to any iOS project.
 Building iOS frameworks is new in Xcode 6. You cannot build Violation directly with Xcode 5 or lower.
-Xcode6-Beta4 is required.
+Xcode6-Beta6 is required.
 
 Violation requires iOS 6.0 or higher.
 
@@ -29,7 +29,7 @@ Swift requires iOS 7.0 or higher. Use the Objective-C demo on an iOS 6 device.
 Quick demo
 ==========
 
-1. Open the Violation.xcworkspace file in this directory using Xcode6-Beta4, either by double-clicking
+1. Open the Violation.xcworkspace file in this directory using Xcode6, either by double-clicking
 the file or using File > Open in Xcode. The workspace contains projects to build the framework
 and two demos.
 2. In the upper left-hand corner of Xcode, select the app you want to run (ViolationDemo-ObjC
@@ -77,9 +77,9 @@ your app project, unless you are already using it.
 Other versions of Xcode
 =======================
 
-It may be possible to use Violation with other versions of Xcode, in case you cannot use Xcode6-Beta4
+It may be possible to use Violation with other versions of Xcode, in case you cannot use Xcode6-Beta6
 for any reason. But these methods are not yet well tested and may lead to further issues that have not
-yet been discovered. Please use Xcode6-Beta4 if possible, but if you cannot for some reason, here are
+yet been discovered. Please use Xcode6-Beta6 if possible, but if you cannot for some reason, here are
 some workarounds.
 
 Xcode5 (non-framework)
