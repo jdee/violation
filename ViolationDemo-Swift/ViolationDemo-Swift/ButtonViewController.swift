@@ -41,11 +41,11 @@ class ButtonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController.tabBar.translucent = false
+        tabBarController!.tabBar.translucent = false
 
         assert(tabBarItem.tag == 2)
-        assert(tabBarController.viewControllers.count == 3)
-        assert(tabBarController.viewControllers[2] === self)
+        assert(tabBarController!.viewControllers!.count == 3)
+        assert(tabBarController!.viewControllers![2] === self)
 
         button = ViolationGearButton(frame: buttonHolder.bounds)
         buttonHolder.addSubview(button)

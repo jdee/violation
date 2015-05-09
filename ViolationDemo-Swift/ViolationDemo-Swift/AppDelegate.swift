@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         NSLog("Using Violation.framework version %f", ViolationVersionNumber) // Can't see ViolationVersionString in Swift (it's a const char[]).
         return true
     }
