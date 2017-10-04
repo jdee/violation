@@ -17,7 +17,7 @@
 		7BAD8C76196C7E6900E8D2B1 /* ViolationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C6E196C7E6900E8D2B1 /* ViolationControl.m */; };
 		7BAD8C78196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C70196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.m */; };
 		7BAD8C7A196C7E6900E8D2B1 /* ViolationDirectionWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD8C72196C7E6900E8D2B1 /* ViolationDirectionWheel.m */; };
-		7BAD8C99196C85B300E8D2B1 /* NSString+Violation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6B196C7E6900E8D2B1 /* NSString+Violation.h */; };
+		7BAD8C99196C85B300E8D2B1 /* NSString+Violation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6B196C7E6900E8D2B1 /* NSString+Violation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C9A196C85B300E8D2B1 /* ViolationControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6D196C7E6900E8D2B1 /* ViolationControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C9B196C85B300E8D2B1 /* ViolationDirectedPressGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C6F196C7E6900E8D2B1 /* ViolationDirectedPressGestureRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BAD8C9C196C85B300E8D2B1 /* ViolationDirectionWheel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD8C71196C7E6900E8D2B1 /* ViolationDirectionWheel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -262,7 +262,6 @@
 			attributes = {
 				CLASSPREFIX = Violation;
 				LastSwiftMigration = 0700;
-				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Violation Technology";
 				TargetAttributes = {
 					7BAD8C4E196C69F700E8D2B1 = {

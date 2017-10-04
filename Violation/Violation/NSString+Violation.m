@@ -19,18 +19,7 @@
 @implementation NSString(Violation)
 - (CGSize)sizeOfTextWithFont:(UIFont *)font
 {
-    CGSize textSize = CGSizeZero;
-
-    if ([self respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [self sizeWithAttributes:@{NSFontAttributeName: font}];
-    }
-    else if ([self respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [self sizeWithFont:font];
-    }
-
-    return textSize;
+    return [self sizeWithAttributes:@{NSFontAttributeName: font}];
 }
 
 @end

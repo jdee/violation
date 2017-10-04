@@ -40,6 +40,7 @@ FOUNDATION_EXPORT double ViolationVersionNumber;
 FOUNDATION_EXPORT const unsigned char ViolationVersionString[];
 #endif // VIOLATION_NO_FRAMEWORK
 
+#import <Violation/NSString+Violation.h>
 #import <Violation/ViolationDirectedPressGestureRecognizer.h>
 #import <Violation/ViolationDirectionWheel.h> // imports ViolationControl.h, so no need for explicit import
 #import <Violation/ViolationGearBarButtonItem.h>

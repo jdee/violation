@@ -307,19 +307,7 @@
      * Works fine in the demo apps. I wonder if this is due to using a static library or something.
      * It compiles fine, but then crashes saying sizeOfTextWithFont: is an unknown message.
      */
-    CGSize textSize;
-    if ([string respondsToSelector:@selector(sizeWithAttributes:)]) {
-        // iOS 7+
-        textSize = [string sizeWithAttributes:@{NSFontAttributeName: font}];
-    }
-    else if ([string respondsToSelector:@selector(sizeWithFont:)]) {
-        // iOS 5 & 6
-        textSize = [string sizeWithFont:font];
-    }
-    else {
-        // DEBT: And? Not that we're likely to get here.
-    }
-    return textSize;
+    return [string sizeOfTextWithFont:font];
 }
 
 @end
