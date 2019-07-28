@@ -277,11 +277,12 @@
 			};
 			buildConfigurationList = 7BAD8C49196C69F700E8D2B1 /* Build configuration list for PBXProject "Violation" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
 				en,
+				Base,
 			);
 			mainGroup = 7BAD8C45196C69F700E8D2B1;
 			productRefGroup = 7BAD8C50196C69F700E8D2B1 /* Products */;
